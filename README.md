@@ -34,5 +34,24 @@ For detailed learning context, check out `PROJECT_CONTEXT.md` and the notes in t
 * **Spring Boot 3.x**
 * *(More to be added as we progress...)*
 
+## 📁 Current Project Structure (Phase 2)
+```text
+spring boot/
+├── backend/ (Spring Boot Application)
+│   └── src/main/java/com/devopshub/backend/
+│       ├── BackendApplication.java     (Entry Point)
+│       ├── HelloController.java        (Test GET Endpoint)
+│       ├── ProjectController.java      (REST Controller for Projects)
+│       ├── service/
+│       │   └── ProjectService.java     (Business Logic & In-Memory Storage)
+│       └── dto/
+│           └── ProjectDTO.java         (Data Transfer Object)
+├── notes/
+│   ├── Phase1_Spring_Fundamentals/     (Topic-wise learning notes)
+│   └── Phase2_REST_API/                (Topic-wise learning notes)
+├── PROJECT_CONTEXT.md                  (Learning history and state)
+└── PAUSED.md                           (Exactly where the current session stopped)
+```
+
 ---
 *Note: This README will be continuously updated as new features are added to DevOpsHub.*
