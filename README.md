@@ -16,11 +16,11 @@ The goal of this project is not just to build an application, but to learn how t
 ## 📚 Learning Journey
 
 This project evolves alongside my learning process. We are following a structured roadmap:
-* **Phase 1:** Spring Fundamentals & Setup (In Progress)
-* **Phase 2:** REST API Development 
-* **Phase 3:** Database & JPA (PostgreSQL)
-* **Phase 4:** Proper Application Architecture
-* **Phase 5:** Validation & Error Handling
+* **Phase 1:** Spring Fundamentals & Setup (Completed)
+* **Phase 2:** REST API Development (Completed)
+* **Phase 3:** Database & JPA (PostgreSQL) (Completed)
+* **Phase 4:** Proper Application Architecture (Completed)
+* **Phase 5:** Validation & Error Handling (Completed)
 * **Phase 6:** Spring Security (Authentication & Authorization)
 * **Phase 7:** Automated Testing
 * **Phase 8:** API Documentation (Swagger/OpenAPI)
@@ -29,28 +29,42 @@ This project evolves alongside my learning process. We are following a structure
 
 For detailed learning context, check out `PROJECT_CONTEXT.md` and the notes in the `notes/` directory.
 
-## 🛠️ Technology Stack (Evolving)
-* **Java**
+## 🛠️ Technology Stack
+* **Java 21**
 * **Spring Boot 3.x**
+* **PostgreSQL**
+* **Spring Boot Validation**
 * *(More to be added as we progress...)*
 
-## 📁 Current Project Structure (Phase 2)
+## 📁 Current Project Structure (Phase 5)
 ```text
 spring boot/
 ├── backend/ (Spring Boot Application)
 │   └── src/main/java/com/devopshub/backend/
-│       ├── BackendApplication.java     (Entry Point)
-│       ├── HelloController.java        (Test GET Endpoint)
-│       ├── ProjectController.java      (REST Controller for Projects)
+│       ├── BackendApplication.java       (Entry Point)
+│       ├── controller/
+│       │   ├── HelloController.java      (Test GET Endpoint)
+│       │   └── ProjectController.java    (REST Controller for Projects)
 │       ├── service/
-│       │   └── ProjectService.java     (Business Logic & In-Memory Storage)
-│       └── dto/
-│           └── ProjectDTO.java         (Data Transfer Object)
+│       │   └── ProjectService.java       (Business Logic)
+│       ├── repository/
+│       │   └── ProjectRepository.java    (Database Access)
+│       ├── entity/
+│       │   └── Project.java              (Database Model)
+│       ├── dto/
+│       │   └── ProjectDTO.java           (Data Transfer Object)
+│       └── exception/
+│           ├── GlobalExceptionHandler.java    (Customer Service Desk)
+│           └── ResourceNotFoundException.java (Custom 404 Error)
 ├── notes/
-│   ├── Phase1_Spring_Fundamentals/     (Topic-wise learning notes)
-│   └── Phase2_REST_API/                (Topic-wise learning notes)
-├── PROJECT_CONTEXT.md                  (Learning history and state)
-└── PAUSED.md                           (Exactly where the current session stopped)
+│   ├── Phase1_Fundamentals/
+│   ├── Phase2_REST_API/
+│   ├── Phase3_Database_JPA/
+│   ├── Phase4_Architecture/
+│   ├── Phase5_Validation/
+│   └── Errors_and_Fixes/
+├── PROJECT_CONTEXT.md                    (Learning history and state)
+└── PAUSED.md                             (Exactly where the current session stopped)
 ```
 
 ---
