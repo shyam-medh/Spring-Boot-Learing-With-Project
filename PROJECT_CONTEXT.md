@@ -4,32 +4,32 @@
 "Become capable of independently designing, developing, debugging, testing, containerizing and deploying Spring Boot applications."
 
 ## CURRENT STATUS
-* **CURRENT PHASE:** 2
-* **CURRENT MODULE:** REST API Development
-* **CURRENT LESSON:** Full CRUD & The Service Layer
-* **CURRENT CONCEPT:** HTTP DELETE & @PathVariable
-* **STATUS:** Paused for the night
-* **LAST COMPLETED CONCEPT:** HTTP POST, @RequestBody, and In-Memory Service Logic
-* **NEXT CONCEPT:** Testing the @DeleteMapping
-* **CURRENT PROJECT MILESTONE:** v0.2 - REST API basics
-* **CURRENT IMPLEMENTATION TASK:** Implement the `deleteProject` method in the Service and Controller.
+* **CURRENT PHASE:** 3
+* **CURRENT MODULE:** Database & JPA (PostgreSQL)
+* **CURRENT LESSON:** Introduction to Databases & Dependencies
+* **CURRENT CONCEPT:** Replacing In-Memory Lists with Real Storage
+* **STATUS:** Learning
+* **LAST COMPLETED CONCEPT:** Completed Phase 2 (REST API, CRUD, DTOs, Service Layer, Path Variables)
+* **NEXT CONCEPT:** Adding Database Dependencies and connecting to PostgreSQL
+* **CURRENT PROJECT MILESTONE:** v0.3 - Database Integration
+* **CURRENT IMPLEMENTATION TASK:** Add PostgreSQL and Spring Data JPA dependencies to pom.xml.
 
 ## SESSION HANDOFF
-* **What I learned today:** Initialized the project, learned IoC, Dependency Injection, REST Controllers, GET/POST mapping, JSON, DTOs, layered architecture, and how Spring converts bodies and handles Path Variables.
-* **What I implemented:** Created the `backend` Spring Boot app, built `HelloController`, built `ProjectDTO`, built `ProjectService` with an in-memory list, and built `ProjectController` with `GET` and `POST` endpoints.
-* **What changed in the project:** Created all the Phase 1 and Phase 2 notes, updated `ProjectController.java`, `ProjectService.java`, and `ProjectDTO.java`.
-* **Problems encountered:** Running `javac` directly vs Maven. Understanding how the Service relates to the Controller.
-* **Problems solved:** Properly running `mvn spring-boot:run` and understanding how Dependency Injection wires the Controller and Service automatically.
-* **Concepts I struggled with:** Dependency Injection and Layered Architecture (Resolved by seeing the real code flow!).
+* **What I learned today:** Why we use DevTools (`spring-boot-devtools`) for hot-reloading. How `removeIf` (lambdas) work. The philosophy of REST (using HTTP Methods as verbs instead of URLs). Why data disappears on server restart without a database.
+* **What I implemented:** Finished the full CRUD basics by adding the `deleteProject` functionality and fixing the `@PathVariable` requirement in Spring Boot 3.2.
+* **What changed in the project:** Updated `pom.xml` to include DevTools. Completed `ProjectController` and `ProjectService`.
+* **Problems encountered:** 500 Internal Server error on DELETE request due to a missing compiler parameter name. Forgot to save the Service file before running the server. Typo in XML tag (`dependencies` instead of `dependency`).
+* **Problems solved:** Learned to explicitly name `@PathVariable("id")`, learned to check for unsaved files (`Ctrl + S`), and learned XML structure for Maven.
+* **Concepts I struggled with:** Remembering the save/compile flow vs hot-reloading (resolved by adding DevTools).
 * **Current Git branch:** main
-* **Current project state:** API can fetch projects (`GET`) and add projects (`POST`) using an in-memory list.
-* **Exact next task:** We paused right before writing the code to handle the `DELETE` request (which introduces `@PathVariable`). 
-* **Exact next concept to learn:** Finish the `DELETE` implementation task, then move on to Phase 3: PostgreSQL Database!
+* **Current project state:** Fully functional In-Memory REST API for Projects.
+* **Exact next task:** We are starting Phase 3. Need to connect the app to a real PostgreSQL database.
+* **Exact next concept to learn:** Spring Data JPA and Entities.
 
 ## LEARNING PROGRESS
 * [x] Phase 0: Prerequisites
 * [x] Phase 1: Spring Fundamentals
-* [~] Phase 2: REST API Development
+* [x] Phase 2: REST API Development
 * [ ] Phase 3: Database & JPA
 * [ ] Phase 4: Proper Application Architecture
 * [ ] Phase 5: Validation & Error Handling

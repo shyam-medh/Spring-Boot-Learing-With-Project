@@ -1,8 +1,14 @@
 package com.devopshub.backend.dto;
 
+import jakarta.validation.constraints.NotBlank; // Add Import
+
 public class ProjectDTO {
     private Long id;
+
+    @NotBlank(message = "Project name can't be empty") // Add Rule
     private String name;
+
+    @NotBlank(message = "Project status can't be empty") // Add Rule
     private String status;
 
     // creating the getter and setter and constructor
