@@ -21,7 +21,7 @@ This project evolves alongside my learning process. We are following a structure
 * **Phase 3:** Database & JPA (PostgreSQL) (Completed)
 * **Phase 4:** Proper Application Architecture (Completed)
 * **Phase 5:** Validation & Error Handling (Completed)
-* **Phase 6:** Spring Security (Authentication & Authorization)
+* **Phase 6:** Spring Security (Authentication & Authorization) ← *In Progress (Phase 6.4: JWT)*
 * **Phase 7:** Automated Testing
 * **Phase 8:** API Documentation (Swagger/OpenAPI)
 * **Phase 9:** Production Features (Actuator, Logging)
@@ -32,25 +32,34 @@ For detailed learning context, check out `PROJECT_CONTEXT.md` and the notes in t
 ## 🛠️ Technology Stack
 * **Java 21**
 * **Spring Boot 3.x**
-* **PostgreSQL**
+* **PostgreSQL** (via Docker)
 * **Spring Boot Validation**
-* *(More to be added as we progress...)*
+* **Spring Boot Security**
+* **JJWT 0.11.5** (JSON Web Tokens)
 
-## 📁 Current Project Structure (Phase 5)
+## 📁 Current Project Structure (Phase 6)
 ```text
 spring boot/
 ├── backend/ (Spring Boot Application)
 │   └── src/main/java/com/devopshub/backend/
 │       ├── BackendApplication.java       (Entry Point)
+│       ├── config/
+│       │   ├── SecurityConfig.java       (The Club Manager - Security Rules)
+│       │   └── DataInitializer.java      (Seeds admin user into DB on startup)
+│       ├── security/
+│       │   └── JwtUtil.java              (The Wristband Machine - generates & validates JWTs)
 │       ├── controller/
 │       │   ├── HelloController.java      (Test GET Endpoint)
 │       │   └── ProjectController.java    (REST Controller for Projects)
 │       ├── service/
-│       │   └── ProjectService.java       (Business Logic)
+│       │   ├── ProjectService.java       (Business Logic)
+│       │   └── CustomUserDetailsService.java (The Bouncer - loads users from DB)
 │       ├── repository/
-│       │   └── ProjectRepository.java    (Database Access)
+│       │   ├── ProjectRepository.java    (Database Access)
+│       │   └── UserRepository.java       (User Database Access)
 │       ├── entity/
-│       │   └── Project.java              (Database Model)
+│       │   ├── Project.java              (Database Model)
+│       │   └── User.java                 (User Database Model)
 │       ├── dto/
 │       │   └── ProjectDTO.java           (Data Transfer Object)
 │       └── exception/
@@ -62,6 +71,9 @@ spring boot/
 │   ├── Phase3_Database_JPA/
 │   ├── Phase4_Architecture/
 │   ├── Phase5_Validation/
+│   ├── Phase6_Security/
+│   │   └── SPRING_SECURITY_FLOW.md      (Full security flow explained)
+│   ├── MENTAL_MODELS.md                 (Key analogies & concepts)
 │   └── Errors_and_Fixes/
 ├── PROJECT_CONTEXT.md                    (Learning history and state)
 └── PAUSED.md                             (Exactly where the current session stopped)

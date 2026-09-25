@@ -124,7 +124,7 @@
 * [x] 5.3: Custom Exceptions (`ResourceNotFoundException`)
 
 **Phase 6: Spring Security**
-* [ ] 6.1: Basic Security Setup & Default Login
+* [x] 6.1: Basic Security Setup & Default Login
 * [ ] 6.2: Password Encoding (BCrypt)
 * [ ] 6.3: Custom UserDetailsService & Database Users
 * [ ] 6.4: Stateless Authentication & JWT Generation
