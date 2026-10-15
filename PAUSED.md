@@ -1,22 +1,27 @@
-# Session Paused
+# Session Progress Checkpoint
 
-**Last Updated**: 2026-09-26
+**Last Updated**: 2026-10-16
 
-**Current Status**: We are deep into **Phase 6.4: JWT (JSON Web Tokens)**.
+**Current Status**: **Phase 6.4 & 6.5 Completed! JWT Authentication is Live and Verified!**
 
 ### What Was Completed This Session:
-- ✅ **Phase 6.3 fully done**: `User` entity, `UserRepository`, `CustomUserDetailsService`, `DataInitializer` all working.
-- ✅ **Basic Auth working**: Successfully logged in via Postman using `admin` / `supersecret` from the PostgreSQL database.
-- ✅ **JWT dependencies added**: `jjwt-api`, `jjwt-impl`, `jjwt-jackson` v0.11.5 added to `pom.xml`.
-- ✅ **`JwtUtil.java` created**: The Wristband Machine is built inside `backend/src/main/java/com/devopshub/backend/security/JwtUtil.java`. It contains `generateToken()`, `extractUsername()`, and `isTokenValid()`.
-- ✅ **Notes updated**: `notes/MENTAL_MODELS.md` updated with JWT anatomy mental model. `notes/Phase6_Security/SPRING_SECURITY_FLOW.md` created with the full security flow.
+- ✅ **`JwtAuthenticationFilter.java`**: Implemented the turnstile filter extending `OncePerRequestFilter`. Intercepts `Authorization: Bearer <token>`, validates the token, and sets the authenticated user in `SecurityContextHolder`.
+- ✅ **DTOs Created**: `AuthRequest.java` (username + password) and `AuthResponse.java` (token) created in `dto/`.
+- ✅ **`AuthController.java`**: Implemented `POST /api/auth/login` endpoint that authenticates via `AuthenticationManager` and issues JWT tokens.
+- ✅ **`SecurityConfig.java`**: Configured `SecurityFilterChain` (CSRF disabled, session `STATELESS`, `/api/auth/**` permitted, all other routes secured, `JwtAuthenticationFilter` attached before `UsernamePasswordAuthenticationFilter`).
+- ✅ **Exposed `AuthenticationManager` bean** in `SecurityConfig.java`.
+- ✅ **Postman Verification (100% Passing)**:
+  1. `GET /api/projects` with No Auth ➔ **403 Forbidden** (Blocked by filter).
+  2. `POST /api/auth/login` with `admin` / `supersecret` ➔ **200 OK** + JWT Token issued.
+  3. `GET /api/projects` with Bearer Token ➔ **200 OK** + Projects returned from PostgreSQL.
+- ✅ **Notes & Mental Models**:
+  - Created `notes/Phase6_Security/03_Complete_JWT_Security_Story.md` (full story + flow diagrams + interview pitch).
+  - Updated `notes/MENTAL_MODELS.md` with Section 6 (Interview pitch) and Section 7 (The 3-Bucket Mental Model).
 
-### Next Steps upon Resuming:
-1. **Create `JwtAuthenticationFilter.java`** inside the `security/` folder. This is the Bouncer who stands at the door, intercepts every request, and uses `JwtUtil` to scan the wristband.
-2. **Create `AuthController.java`** with a public `/api/auth/login` endpoint. This is the Front Door where users send their password to receive a JWT token in return.
-3. **Update `SecurityConfig.java`** to: permit the `/api/auth/login` route, plug in the new Filter, and disable the old Basic Auth (CSRF, session management → STATELESS).
+### Next Steps:
+1. **User Registration (`POST /api/auth/register`)**: Allow new users to sign up and have their passwords hashed with BCrypt and saved in PostgreSQL.
+2. **Role-Based Authorization (RBAC)**: Restrict endpoints so regular `USER` can only view, while `ADMIN` can create/delete projects.
 
 ### Environment State:
-- Docker container `devopshub-db` should be running PostgreSQL. If not, run: `docker start devopshub-db`
-- Spring Boot server is stopped. Run `mvn spring-boot:run` from the `backend/` directory to restart.
-- All code is successfully pushed to GitHub!
+- Docker container `devopshub-db` is running PostgreSQL.
+- Spring Boot backend is running on `http://localhost:8080`.

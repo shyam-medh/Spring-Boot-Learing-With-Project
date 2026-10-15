@@ -48,3 +48,45 @@ No one memorizes the `io.jsonwebtoken` syntax. We copy and paste the `JwtUtil` c
 * Making a token? -> **Builder**
 * Reading a token? -> **Parser**
 * Both require? -> **The Secret Key**
+
+---
+
+## 6. How to Explain JWT in an Interview (The 5-Step Story)
+When asked *"How does JWT authentication work in your Spring Boot app?"*, use this simple mental flow:
+1. **Login:** User sends credentials to `/api/auth/login`. `AuthenticationManager` checks DB using BCrypt.
+2. **Wristband Created:** `JwtUtil` builds a signed token with username & expiry date and sends it back.
+3. **Turnstile Guard:** On every future request, client attaches `Authorization: Bearer <token>`. Our `JwtAuthenticationFilter` intercepts it.
+4. **Token Scanned:** Filter extracts the token, verifies signature and expiry with `JwtUtil`, and loads user from `CustomUserDetailsService`.
+5. **VIP Clipboard:** Filter pins the user into `SecurityContextHolder`. Spring sees the user is logged in and unlocks the controller!
+
+---
+
+## 7. The 3-Bucket Mental Model (Never Memorize 8 Files!)
+Instead of trying to memorize 8 separate security files, organize them into **3 simple buckets**. Every Spring Boot JWT project in the world follows this exact blueprint:
+
+```text
+ ┌────────────────────────────────────────────────────────┐
+ │ BUCKET 1: THE USER (Where is the user stored?)         │
+ │   - User.java                 (The database table)     │
+ │   - UserRepository.java       (The DB queries)         │
+ │   - CustomUserDetailsService  (The DB-to-Spring bridge)│
+ └────────────────────────────────────────────────────────┘
+                            ▼
+ ┌────────────────────────────────────────────────────────┐
+ │ BUCKET 2: THE TOKEN (How is the wristband handled?)    │
+ │   - JwtUtil.java              (The printer & scanner)  │
+ │   - JwtAuthenticationFilter   (The bouncer checking it)│
+ └────────────────────────────────────────────────────────┘
+                            ▼
+ ┌────────────────────────────────────────────────────────┐
+ │ BUCKET 3: THE RULES (Which doors are open?)            │
+ │   - AuthController.java       (The /login endpoint)    │
+ │   - AuthRequest / AuthResponse(The input/output boxes) │
+ │   - SecurityConfig.java       (The rulebook & filters) │
+ └────────────────────────────────────────────────────────┘
+```
+
+### The Developer's 3-Step Build Checklist:
+1. **Bucket 1:** *"Can Spring load users from my database?"* → Write `User`, `UserRepository`, `CustomUserDetailsService`.
+2. **Bucket 2:** *"Can I create and check tokens?"* → Bring in `JwtUtil` and `JwtAuthenticationFilter`.
+3. **Bucket 3:** *"Can users log in and are doors protected?"* → Write `AuthController` and configure `SecurityConfig`.

@@ -21,7 +21,7 @@ This project evolves alongside my learning process. We are following a structure
 * **Phase 3:** Database & JPA (PostgreSQL) (Completed)
 * **Phase 4:** Proper Application Architecture (Completed)
 * **Phase 5:** Validation & Error Handling (Completed)
-* **Phase 6:** Spring Security (Authentication & Authorization) ← *In Progress (Phase 6.4: JWT)*
+* **Phase 6:** Spring Security (Authentication & Authorization) ← *In Progress (JWT Auth Complete, moving to RBAC & Registration)*
 * **Phase 7:** Automated Testing
 * **Phase 8:** API Documentation (Swagger/OpenAPI)
 * **Phase 9:** Production Features (Actuator, Logging)
@@ -44,16 +44,17 @@ spring boot/
 │   └── src/main/java/com/devopshub/backend/
 │       ├── BackendApplication.java       (Entry Point)
 │       ├── config/
-│       │   ├── SecurityConfig.java       (The Club Manager - Security Rules)
+│       │   ├── SecurityConfig.java       (The Club Manager - Security Rules & Filter Chain)
 │       │   └── DataInitializer.java      (Seeds admin user into DB on startup)
 │       ├── security/
-│       │   └── JwtUtil.java              (The Wristband Machine - generates & validates JWTs)
+│       │   ├── JwtUtil.java              (The Wristband Machine - generates & validates JWTs)
+│       │   └── JwtAuthenticationFilter.java (The Bouncer - intercepts requests & checks JWT)
 │       ├── controller/
-│       │   ├── HelloController.java      (Test GET Endpoint)
+│       │   ├── AuthController.java       (The Login Desk - /api/auth/login)
 │       │   └── ProjectController.java    (REST Controller for Projects)
 │       ├── service/
 │       │   ├── ProjectService.java       (Business Logic)
-│       │   └── CustomUserDetailsService.java (The Bouncer - loads users from DB)
+│       │   └── CustomUserDetailsService.java (The Translator - loads users from DB)
 │       ├── repository/
 │       │   ├── ProjectRepository.java    (Database Access)
 │       │   └── UserRepository.java       (User Database Access)
@@ -61,6 +62,8 @@ spring boot/
 │       │   ├── Project.java              (Database Model)
 │       │   └── User.java                 (User Database Model)
 │       ├── dto/
+│       │   ├── AuthRequest.java          (Login credentials DTO)
+│       │   ├── AuthResponse.java         (JWT Token DTO)
 │       │   └── ProjectDTO.java           (Data Transfer Object)
 │       └── exception/
 │           ├── GlobalExceptionHandler.java    (Customer Service Desk)
@@ -72,11 +75,14 @@ spring boot/
 │   ├── Phase4_Architecture/
 │   ├── Phase5_Validation/
 │   ├── Phase6_Security/
-│   │   └── SPRING_SECURITY_FLOW.md      (Full security flow explained)
-│   ├── MENTAL_MODELS.md                 (Key analogies & concepts)
+│   │   ├── 01_Basic_Security.md
+│   │   ├── 02_Security_Config_and_BCrypt.md
+│   │   ├── 03_Complete_JWT_Security_Story.md
+│   │   └── SPRING_SECURITY_FLOW.md
+│   ├── MENTAL_MODELS.md                 (Key analogies, 3-Bucket model & concepts)
 │   └── Errors_and_Fixes/
 ├── PROJECT_CONTEXT.md                    (Learning history and state)
-└── PAUSED.md                             (Exactly where the current session stopped)
+└── PAUSED.md                             (Current checkpoint)
 ```
 
 ---
