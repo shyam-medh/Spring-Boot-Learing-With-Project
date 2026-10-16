@@ -8,8 +8,10 @@ The moment you paste `<artifactId>spring-boot-starter-security</artifactId>` int
 
 ## 2. Taking Control (`SecurityConfig.java`)
 To stop the random passwords and take over, we create the Manager: `SecurityConfig.java`.
-* **`@EnableWebSecurity`**: This tells Spring Boot: *"Stand down, I am the Manager now. I am taking over the security rules."*
-* **The Decoder Ring (`PasswordEncoder`)**: Inside this file, we create a `@Bean` for the `BCryptPasswordEncoder`. This is mandatory because Spring flat-out refuses to handle or store passwords in plain-text. 
+* **The Security Manager**: Custom configuration that tells Spring Boot to stand down so our own rules apply.
+* **The Decoder Ring (`PasswordEncoder`)**: A custom bean for `BCryptPasswordEncoder`. This is mandatory because Spring flat-out refuses to handle or store passwords in plain-text.
+
+*(Security configuration annotations like `@Configuration`, `@EnableWebSecurity`, and `@Bean` are documented in [notes/ANNOTATIONS.md](../ANNOTATIONS.md#6-spring-security)).* 
 
 ## 3. Building the Database Pipeline
 Security is useless without real users in the database.

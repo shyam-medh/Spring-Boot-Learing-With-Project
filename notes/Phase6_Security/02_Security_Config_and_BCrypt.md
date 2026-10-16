@@ -2,8 +2,10 @@
 
 By default, Spring Security uses a randomly generated password. In the real world, we need to take control of this configuration.
 
-### 1. The `@Configuration` Class
-To override Spring Security's default behavior, we create a class annotated with `@Configuration` and `@EnableWebSecurity`. This tells Spring: *"Don't use your default lock; use my custom rules instead!"*
+### 1. The Security Configuration File
+To override Spring Security's default behavior, we create a dedicated security configuration class. This tells Spring: *"Don't use your default lock; use my custom rules instead!"*
+
+*(For full details on `@Configuration` and `@EnableWebSecurity`, see [notes/ANNOTATIONS.md](../ANNOTATIONS.md#6-spring-security)).*
 
 ### 2. Password Encoding (BCrypt)
 If you save a password like `mySecret123` into a database as plain text, you will get fired. If a hacker breaches your database, they will instantly see everyone's passwords!

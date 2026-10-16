@@ -45,6 +45,8 @@ public class GlobalExceptionHandler {
 ```
 
 ### How it works
-1. **`@RestControllerAdvice`**: You put this annotation on a class to declare it as the global Customer Service Desk. It sits above your entire app listening for crashes.
-2. **`@ExceptionHandler`**: You put this on a method inside the class. It acts as a filter. You can tell it: *"Hey, if anyone ever throws a `MethodArgumentNotValidException` anywhere in the app, send it to this method."*
-3. **The `forEach` loop**: The raw error from Spring Boot is a giant, nested Java object containing a list of all the fields that failed validation. We loop through that list, extract just the field name (`name` or `status`) and the clean message (`Project name can't be empty`), and shove it into a simple `HashMap` (which automatically turns into clean JSON!).
+1. **The Global Interceptor:** A class designated to sit above the entire application, listening for any uncaught exceptions thrown by controllers.
+2. **The Handler Method:** Catches specific exception types (like `MethodArgumentNotValidException`) and maps them to clean HTTP responses.
+3. **The Extraction Logic:** The raw error from Spring Boot contains a list of failed fields. We loop through that list, extract the field name and message, and return them as a clean JSON map.
+
+*(For full syntax and options for `@RestControllerAdvice`, `@ExceptionHandler`, and `@ResponseStatus`, see [notes/ANNOTATIONS.md](../ANNOTATIONS.md#5-error-handling-customer-service-desk)).*

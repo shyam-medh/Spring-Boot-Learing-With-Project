@@ -9,8 +9,4 @@ To prevent this, we use the **Spring Boot Validation** library. It acts as a "Bo
 2. **The Enforcer:** You put the `@Valid` annotation in your Controller method next to the incoming data. 
 3. **The Result:** If the internet sends bad data, the Controller instantly rejects the request with a `400 Bad Request` before the Service (Chef) ever sees it!
 
-### Common Validation Annotations
-* `@NotNull`: The field cannot be `null` (but it can be an empty string `""`).
-* `@NotBlank`: The field cannot be `null` AND it cannot be empty spaces `"   "`. (This is usually what you want for Strings!)
-* `@Size(min = 1, max = 255)`: Restricts the length of a String.
-* `@Email`: Ensures the string is a valid email format.
+*(For the complete list of validation annotations like `@NotBlank`, `@NotNull`, `@Size`, etc., see [notes/ANNOTATIONS.md](../ANNOTATIONS.md#4-validation-checking-user-input)).*

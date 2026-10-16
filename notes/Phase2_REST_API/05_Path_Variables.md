@@ -4,8 +4,8 @@ In REST APIs, we often need to perform actions on a *specific* resource. For exa
 
 To do this, we include the ID directly in the URL: `http://localhost:8080/api/projects/2`
 
-## 1. `@PathVariable`
-Spring allows us to extract that `2` out of the URL and pass it into our Java method using the `@PathVariable` annotation.
+## 1. Dynamic URL Parameters
+In RESTful routing, variables like `{id}` in a path are automatically bound to Java method arguments.
 
 Example:
 ```java
@@ -16,6 +16,8 @@ public String deleteProject(@PathVariable Long id) {
     return "Deleted!";
 }
 ```
+
+*(For full syntax, rules, and examples of `@PathVariable`, see [notes/ANNOTATIONS.md](../ANNOTATIONS.md#2-web--rest-controllers-handling-http-requests)).*
 
 ## Why use it?
 This makes APIs incredibly predictable and clean. It follows strict REST principles:

@@ -79,7 +79,10 @@ spring boot/
 │   │   ├── 01_Basic_Security.md
 │   │   ├── 02_Security_Config_and_BCrypt.md
 │   │   ├── 03_Complete_JWT_Security_Story.md
+│   │   ├── 04_Registration_and_RBAC.md
 │   │   └── SPRING_SECURITY_FLOW.md
+│   ├── Phase7_Testing/
+│   │   └── 01_Unit_Testing_with_Mockito.md
 │   ├── ANNOTATIONS.md                   (Master Cheatsheet for all Spring Annotations)
 │   ├── MENTAL_MODELS.md                 (Key analogies, 3-Bucket model & concepts)
 │   └── Errors_and_Fixes/

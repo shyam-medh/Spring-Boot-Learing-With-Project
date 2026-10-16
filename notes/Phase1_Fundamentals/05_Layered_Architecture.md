@@ -19,3 +19,7 @@ In Spring Boot, we organize our code into three distinct layers to separate resp
 
 ## The Flow of a Request
 HTTP Request -> **Controller** -> **Service** -> **Repository** -> Database -> **Repository** -> **Service** -> **Controller** -> HTTP Response
+
+---
+
+*(For full syntax and descriptions of `@RestController`, `@Service`, and `@Repository`, see [notes/ANNOTATIONS.md](../ANNOTATIONS.md#1-component-scanning--beans-core-spring)).*

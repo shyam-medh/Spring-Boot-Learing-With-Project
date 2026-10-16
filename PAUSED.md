@@ -2,21 +2,16 @@
 
 **Last Updated**: 2026-10-16
 
-**Current Status**: **Phase 6: Spring Security is 100% COMPLETED & VERIFIED! 🎉**
+**Current Status**: **Phase 7: Automated Testing In Progress (Phase 7.1 Unit Testing Complete) & Master Annotations Refactored! 🎉**
 
 ### What Was Completed:
-- ✅ **Phase 6.1:** Basic Security & auto-generated password.
-- ✅ **Phase 6.2:** Password Encoding with BCrypt.
-- ✅ **Phase 6.3:** Custom `User` entity, `UserRepository`, and `CustomUserDetailsService` reading from PostgreSQL.
-- ✅ **Phase 6.4:** JJWT utility (`JwtUtil.java`) for token generation, extraction, and validation.
-- ✅ **Phase 6.5:** Turnstile Filter (`JwtAuthenticationFilter.java`) with safe error-handling for expired/invalid tokens.
-- ✅ **Phase 6.6:** User Registration (`POST /api/auth/register`) with duplicate protection and password hashing.
-- ✅ **Phase 6.7:** Role-Based Access Control (RBAC): `USER` can view projects (`GET`), only `ADMIN` can create (`POST`) and delete (`DELETE`). Verified in Postman (`403` for John, `200` for Admin).
-- ✅ **Master Cheatsheet:** Created `notes/ANNOTATIONS.md` consolidating all Spring Boot annotations.
-- ✅ **Architecture Notes:** Updated `notes/MENTAL_MODELS.md` (3-Bucket model & 5-step pitch) and `notes/Phase6_Security/03_Complete_JWT_Security_Story.md`.
+- ✅ **Phase 6:** Spring Security, BCrypt, Custom `UserDetailsService`, JWT Stateless Authentication, Registration, and RBAC (`ADMIN` vs `USER`).
+- ✅ **Phase 7.1:** Unit Testing `ProjectService` with JUnit 5 & Mockito (`ProjectServiceTest.java`) - 4/4 tests passing!
+- ✅ **Master Cheatsheet:** Created `notes/ANNOTATIONS.md` with collapsible dropdown accordions (`<details>` / `<summary>`) covering Core, Web, JPA, Validation, Error Handling, Security, Testing, and Master Reference Table.
+- ✅ **Clean Notes:** Removed fragmented annotation definitions across all notes to keep `notes/ANNOTATIONS.md` as the single source of truth.
+- ✅ **Architecture Notes:** Updated `notes/MENTAL_MODELS.md` (3-Bucket model & 5-step pitch), `notes/Phase6_Security/04_Registration_and_RBAC.md`, and `notes/Phase7_Testing/01_Unit_Testing_with_Mockito.md`.
 
-### Next Destination: **Phase 7: Automated Testing**
-1. **7.1:** Unit Testing with JUnit 5 and AssertJ.
-2. **7.2:** Mocking the Service layer with Mockito (`ProjectServiceTest`).
-3. **7.3:** Controller Integration Testing with `@WebMvcTest` (`ProjectControllerTest`).
-4. **7.4:** Security Integration Tests.
+### Next Destination: **Phase 7.2: Controller Testing**
+1. **7.2:** Controller Testing with `@WebMvcTest` and `MockMvc` (`ProjectControllerTest`).
+2. **7.3:** Security & Auth testing with mock tokens.
+3. **7.4:** Integration Testing with `@SpringBootTest`.

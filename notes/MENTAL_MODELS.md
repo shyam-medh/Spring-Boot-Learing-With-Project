@@ -2,6 +2,8 @@
 
 This document stores the high-level analogies and "mental models" to help you understand *why* Spring Boot works the way it does, without getting bogged down in the exact code syntax.
 
+> **Looking for Annotation syntax?** All technical details, placement rules, and code snippets for annotations are maintained in one single place: [notes/ANNOTATIONS.md](ANNOTATIONS.md).
+
 ---
 
 ## 1. The 5-Layer Architecture (The Restaurant)
@@ -90,3 +92,20 @@ Instead of trying to memorize 8 separate security files, organize them into **3 
 1. **Bucket 1:** *"Can Spring load users from my database?"* → Write `User`, `UserRepository`, `CustomUserDetailsService`.
 2. **Bucket 2:** *"Can I create and check tokens?"* → Bring in `JwtUtil` and `JwtAuthenticationFilter`.
 3. **Bucket 3:** *"Can users log in and are doors protected?"* → Write `AuthController` and configure `SecurityConfig`.
+
+---
+
+## 8. Automated Testing & Mockito (The Movie Stunt Double)
+**Rule: Never test everything at once.**
+When testing a Service (The Chef), you do not start the database or the web server.
+
+1. **The Stunt Double (`@Mock`):**  
+   If an action scene is too dangerous, movie directors hire a stunt double. In Java, when calling a real database is too slow or dangerous, we hire a **Mock** repository.
+2. **Scripting the Actor (`when(...).thenReturn(...)`):**  
+   You give the stunt double its script: *"When asked for projects, return this dummy list."*
+3. **Plugging the Actor in (`@InjectMocks`):**  
+   Takes your real Chef (`ProjectService`) and hands it the fake stunt double instead of the real database.
+4. **The 3 A's Rhythm (Arrange - Act - Assert):**
+   * **Arrange:** Set up dummy data & train the mock.
+   * **Act:** Call the method you want to test.
+   * **Assert:** Verify the result matches expectations (`assertThat(...)`).

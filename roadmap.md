@@ -123,18 +123,18 @@
 * [x] 5.2: Global Exception Handler (`@RestControllerAdvice`)
 * [x] 5.3: Custom Exceptions (`ResourceNotFoundException`)
 
-**Phase 6: Spring Security**
+**Phase 6: Spring Security (Completed)**
 * [x] 6.1: Basic Security Setup & Default Login
-* [ ] 6.2: Password Encoding (BCrypt)
-* [ ] 6.3: Custom UserDetailsService & Database Users
-* [ ] 6.4: Stateless Authentication & JWT Generation
-* [ ] 6.5: JWT Validation Filters
-* [ ] 6.6: Role-Based Authorization
+* [x] 6.2: Password Encoding (BCrypt)
+* [x] 6.3: Custom UserDetailsService & Database Users
+* [x] 6.4: Stateless Authentication & JWT Generation
+* [x] 6.5: JWT Validation Filters
+* [x] 6.6: Role-Based Authorization
 
 **Phase 7: Testing**
-* [ ] 7.1: Unit Testing with JUnit 5
-* [ ] 7.2: Mocking with Mockito (Testing Services)
-* [ ] 7.3: Integration Testing with `@DataJpaTest` (Testing Repositories)
+* [x] 7.1: Unit Testing with JUnit 5
+* [x] 7.2: Mocking with Mockito (Testing Services)
+* [ ] 7.3: Integration Testing with `@WebMvcTest` (Testing Controllers & MockMvc)
 * [ ] 7.4: E2E Testing with `@SpringBootTest` & Testcontainers
 
 * [ ] Phase 8: API Documentation
