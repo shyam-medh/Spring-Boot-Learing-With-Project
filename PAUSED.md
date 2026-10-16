@@ -10,6 +10,7 @@
 - ✅ **Phase 7.2:** Controller Slice Testing with `@WebMvcTest` and `MockMvc` (`ProjectControllerTest.java`) - 6/6 tests passing (GET, POST, DELETE, 404, and Bean Validation 400)!
 - ✅ **Spring Boot 4 Architecture:** Migrated test slice annotations to modern Spring Boot 4 packages (`@WebMvcTest`, `@AutoConfigureMockMvc`, and `@MockitoBean`).
 - ✅ **Master Cheatsheet:** Maintained `notes/ANNOTATIONS.md` with collapsible dropdown accordions (`<details>` / `<summary>`) covering all 8 phases.
+- ✅ **Mental Models:** Added Section 9 to `notes/MENTAL_MODELS.md` capturing the Waiter/Postman/Chef analogy, the 4 Import Buckets, and the Golden Rule.
 - ✅ **Detailed Notes:** Created `notes/Phase7_Testing/02_Controller_Testing_with_MockMvc.md`.
 
 ### Next Destination: **Phase 7.3: Database & Security Integration Testing**
