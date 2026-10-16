@@ -6,32 +6,33 @@
 ## CURRENT STATUS
 * **CURRENT PHASE:** 7
 * **CURRENT MODULE:** Automated Testing
-* **CURRENT LESSON:** Phase 7.1: Unit Testing with JUnit 5 & Mockito
-* **CURRENT CONCEPT:** The Arrange-Act-Assert Pattern, Stunt Doubles (`@Mock`), and Service Layer Isolation
-* **STATUS:** Learning & Practicing
-* **LAST COMPLETED CONCEPT:** Completed Phase 6 (Spring Security, BCrypt, Custom UserDetailsService, JWT generation/validation, User Registration, and Role-Based Access Control)
-* **NEXT CONCEPT:** Phase 7.2: Controller Testing with `@WebMvcTest` and `MockMvc`
+* **CURRENT LESSON:** Phase 7.2: Controller Testing with `@WebMvcTest` and `MockMvc` (COMPLETED)
+* **CURRENT CONCEPT:** In-Memory HTTP Simulation, `@WebMvcTest`, `MockMvc`, and `jsonPath` assertions
+* **STATUS:** Completed (6/6 tests passing)
+* **LAST COMPLETED CONCEPT:** Phase 7.2: Controller Testing with `@WebMvcTest` & `MockMvc`
+* **NEXT CONCEPT:** Phase 7.3: Testing Security with `@WithMockUser` or Phase 7.4: `@SpringBootTest` End-to-End
 * **CURRENT PROJECT MILESTONE:** v0.7 - Automated Test Suite
-* **CURRENT IMPLEMENTATION TASK:** Unit testing `ProjectService` using JUnit 5 & Mockito (Passed: 4/4 tests).
+* **CURRENT IMPLEMENTATION TASK:** Verified `ProjectControllerTest.java` (6/6 tests passing) and `ProjectServiceTest.java` (4/4 tests passing). Total 10 tests passing!
 
 ## SESSION HANDOFF
 * **What I learned recently:**
   - **Spring Security & JWT:** Why HTTP is stateless. The 3-Bucket Mental Model (User ➔ Token ➔ Rules). How `JwtAuthenticationFilter` intercepts requests and sets authentication on `SecurityContextHolder`. Role-Based Access Control (RBAC) with `hasRole()` and `hasAnyRole()`.
   - **Automated Testing:** The Testing Pyramid (Unit ➔ Web/Integration ➔ End-to-End). Why we mock dependencies using Mockito (The Movie Stunt Double). The 3 A's pattern (Arrange - Act - Assert). How to test happy paths and sad paths (`assertThrows`).
+  - **Controller Testing Mental Models:** The 3 Characters (Waiter under test, Fake Postman `MockMvc`, Stunt Chef `@MockitoBean`). The 4 Import Buckets (Postman Buttons `get/post/delete`, Inspectors `status/jsonPath/content`, Stunt Chef `when/doNothing`, Translator `ObjectMapper`). Why static imports make tests read like English. Why Spring Security requires dummy mocks (`JwtAuthenticationFilter`, `JwtUtil`, `CustomUserDetailsService`) in `@WebMvcTest`.
 * **What I implemented:**
   - `ProjectServiceTest.java`: 4 unit tests covering `getAllProjectS()`, `getProjectById()`, exception handling, and `addProject()`.
-  - `RegisterRequest.java` and `/api/auth/register` in `AuthController.java`.
-  - Handled duplicate usernames in `GlobalExceptionHandler.java`.
-  - Configured RBAC in `SecurityConfig.java`.
-  - Created `notes/ANNOTATIONS.md` as the single master guide for all Spring Boot annotations.
+  - `ProjectControllerTest.java`: 6 controller slice tests with `MockMvc` covering GET, POST, DELETE, 404 handling, and Bean Validation 400.
+  - `notes/Phase7_Testing/02_Controller_Testing_with_MockMvc.md`: Comprehensive guide to controller slice testing.
+  - Fully annotated `backend/pom.xml` with clear numbers and explanations.
+  - Updated `notes/ANNOTATIONS.md` with collapsible dropdowns and Spring Boot 4 modern testing annotations (`@WebMvcTest`, `@AutoConfigureMockMvc`, `@MockitoBean`).
 * **Problems encountered:**
-  - Postman sending an old/expired token from previous server runs to `/api/auth/register`, causing a `SignatureException` and unexpected `403 Forbidden`.
-  - Accidentally typing `POST /api/auth/login` as the URL path in Postman.
+  - `MockBean` cannot be resolved in Spring Boot 4.
+  - `@WebMvcTest` package location changed in Spring Boot 4 modularized starters.
 * **Problems solved:**
-  - Wrapped JWT token parsing in a `try-catch` inside `JwtAuthenticationFilter` so expired/mismatched tokens gracefully fall through without crashing public routes.
-  - Used correct Postman endpoints and switched Bearer tokens between `USER` and `ADMIN` to verify RBAC rules.
+  - In Spring Boot 4, legacy `@MockBean` was removed and replaced by `@MockitoBean` (`org.springframework.test.context.bean.override.mockito.MockitoBean`).
+  - `@WebMvcTest` and `@AutoConfigureMockMvc` are located in `org.springframework.boot.webmvc.test.autoconfigure.*` under `spring-boot-starter-webmvc-test`.
 * **Current Git branch:** main
-* **Current project state:** Fully secured Spring Boot backend with PostgreSQL database, JWT authentication, RBAC, and passing unit tests.
+* **Current project state:** Fully secured Spring Boot backend with passing unit and controller slice tests.
 
 ## LEARNING PROGRESS
 * [x] Phase 0: Prerequisites (Java check, OOP, Maven)
@@ -41,7 +42,7 @@
 * [x] Phase 4: Proper Application Architecture (5-Layer Pattern: Controller, Service, Repo, Entity, DTO)
 * [x] Phase 5: Validation & Error Handling (`@Valid`, `@NotBlank`, `@RestControllerAdvice`, Custom 404)
 * [x] Phase 6: Spring Security (BCrypt, Custom UserDetailsService, JWT Stateless Filter, Registration, RBAC)
-* [/] Phase 7: Testing (In Progress: 7.1 Unit Testing completed)
+* [/] Phase 7: Testing (In Progress: 7.1 Unit Testing & 7.2 Controller Testing completed)
 * [ ] Phase 8: API Documentation (OpenAPI / Swagger)
 * [ ] Phase 9: Production Features (Actuator, Logging, Profiles)
 * [ ] Phase 10: Advanced Spring Boot (Caching, Async, Scheduling)

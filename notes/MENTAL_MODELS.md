@@ -108,4 +108,46 @@ When testing a Service (The Chef), you do not start the database or the web serv
 4. **The 3 A's Rhythm (Arrange - Act - Assert):**
    * **Arrange:** Set up dummy data & train the mock.
    * **Act:** Call the method you want to test.
-   * **Assert:** Verify the result matches expectations (`assertThat(...)`).
+   * **Assert:** Verify the result matches expectations.
+5. **Checking Results (JUnit 5 vs AssertJ):**
+   * Traditional JUnit 5 uses `assertEquals(expected, actual)`.
+   * Modern Spring Boot uses AssertJ `assertThat(actual).isEqualTo(expected)` because it reads like natural English and you can never accidentally flip expected and actual values!
+
+---
+
+## 9. Controller Testing with `MockMvc` (The Doorway & The 4 Buckets)
+
+> **The Golden Rule:**
+> *"Use Mockito when you want to test the pure business logic inside a Service or a Helper class, and use MockMvc when you want to test if your endpoints are wired up correctly."*
+
+### 1. The 3 Characters:
+* **The Waiter:** `ProjectController` (the class under test).
+* **The Fake Postman (`MockMvc`):** Fires in-memory HTTP requests directly into Spring's web pipeline without starting Tomcat.
+* **The Stunt Chef (`@MockitoBean`):** Injects a mock `ProjectService` into the Spring Web context to return scripted responses.
+
+### 2. The 4 Import Buckets:
+```text
+┌────────────────────────────────────────────────────────┐
+│  1. The Postman Buttons:   get(), post(), delete()     │
+│  2. The Inspectors:        status(), jsonPath()        │
+│  3. The Chef Stunt Tools:  when(), doNothing()         │
+│  4. The Translator:        ObjectMapper (Java <-> JSON)│
+└────────────────────────────────────────────────────────┘
+```
+
+### 3. Why Static Imports (`import static`)?
+In Java tests, static imports allow code to read like natural English:  
+Instead of `MockMvcRequestBuilders.get(...)` and `MockMvcResultMatchers.status()`, you just write `get(...)` and `status().isOk()`.
+
+> **Developer Secret:** Nobody types these imports from memory! Type `get("/api/...")`, press **`Alt + Enter`**, and let the IDE auto-import it.
+
+### 4. The 3-Line Rhythm:
+```java
+mockMvc.perform(get("/api/projects"))                         // 1. ACT (Send request)
+       .andExpect(status().isOk())                            // 2. ASSERT (Status code)
+       .andExpect(jsonPath("$[0].name").value("DevOps"));    // 3. ASSERT (Inspect JSON)
+```
+
+### 5. Why Security Dummy Mocks Exist in Slice Tests:
+Even with `@WebMvcTest`, Spring Security's config awakens and looks for its constructor dependencies (`JwtAuthenticationFilter`, `JwtUtil`, `CustomUserDetailsService`). We provide dummy `@MockitoBean` stunt doubles for them and add `@AutoConfigureMockMvc(addFilters = false)` so security filters don't block our isolated controller tests.
+

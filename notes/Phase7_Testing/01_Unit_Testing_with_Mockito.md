@@ -60,7 +60,54 @@ void shouldReturnAllProjects_AsDTOs() {
 
 ---
 
-## 4. Explaining the 4 Tests We Built in `ProjectServiceTest.java`
+## 4. Assertions: Native JUnit 5 vs. AssertJ
+
+Spring Boot's test dependency (`spring-boot-starter-test`) includes **two** assertion libraries:
+
+### Option A: Native JUnit 5 (`org.junit.jupiter.api.Assertions.*`)
+Built directly into JUnit 5:
+* `assertEquals(expected, actual)`
+* `assertNotEquals(expected, actual)`
+* `assertTrue(condition)`
+* `assertFalse(condition)`
+* `assertNull(object)` / `assertNotNull(object)`
+* `assertArrayEquals(expectedArr, actualArr)`
+* `assertThrows(ExpectedException.class, executable)`
+
+### Option B: AssertJ (`org.assertj.core.api.Assertions.assertThat`)
+The modern industry standard for Spring Boot.
+
+### Why Modern Developers Prefer AssertJ (`assertThat`):
+1. **No "Expected vs Actual" Confusion:**
+   - In JUnit 5, you write `assertEquals(expected, actual)`. If you accidentally write `assertEquals(actual, expected)`, the test still passes, but when it fails, JUnit prints a backwards error report!
+   - In AssertJ, you always write in plain English: `assertThat(actual).isEqualTo(expected)`. You can never flip them!
+2. **Fluent Method Chaining & Autocomplete:**
+   - You type `assertThat(result).` and the IDE's autocomplete suggests every possible check (`.isNotNull().hasSize(2).contains(...)`).
+
+### Side-by-Side Comparison:
+
+```java
+// --- Native JUnit 5 Style ---
+import static org.junit.jupiter.api.Assertions.*;
+
+assertNotNull(result);
+assertEquals(2, result.size());
+assertEquals("DevOps Pipeline", result.get(0).getName());
+
+// --- Modern AssertJ Style ---
+import static org.assertj.core.api.Assertions.assertThat;
+
+assertThat(result).isNotNull();
+assertThat(result).hasSize(2);
+assertThat(result.get(0).getName()).isEqualTo("DevOps Pipeline");
+```
+
+> **Where we still use JUnit 5:**  
+> In **Test 3 (Sad Path)**, we use JUnit 5's native **`assertThrows`** because it is clean, simple, and the standard way to verify exceptions!
+
+---
+
+## 5. Explaining the 4 Tests We Built in `ProjectServiceTest.java`
 
 ### Test 1: Happy Path (`getAllProjectS`)
 * **What it tests:** Does `ProjectService` take the list of `Project` entities returned by the database and successfully transform every single one into a `ProjectDTO`?
@@ -80,7 +127,7 @@ void shouldReturnAllProjects_AsDTOs() {
 
 ---
 
-## 5. How to Run Unit Tests
+## 6. How to Run Unit Tests
 
 ```bash
 # Run only ProjectServiceTest:

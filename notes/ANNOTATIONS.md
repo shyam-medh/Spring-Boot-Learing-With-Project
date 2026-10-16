@@ -318,13 +318,21 @@ These annotations live in `src/test/java/` to verify your code automatically.
 ### `@WebMvcTest(SomeController.class)`
 * **Where:** Above a Controller test class.
 * **What it does:** Slices the application to load **only the Web Layer** (Controllers, Filters, Converters) without booting the full database or services. Used together with `MockMvc` for fast HTTP testing.
+* **Spring Boot 4 Package:** `import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;`
 
-### `@MockBean` (Spring Boot 2 / 3.0-3.3) / `@MockitoBean` (Spring Boot 3.4+)
+### `@AutoConfigureMockMvc(addFilters = false)`
+* **Where:** Above a `@WebMvcTest` class.
+* **What it does:** Automatically configures the `MockMvc` instance. Setting `addFilters = false` bypasses security filters so you can test HTTP routing, JSON mapping, and validation in complete isolation.
+* **Spring Boot 4 Package:** `import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;`
+
+### `@MockitoBean` (Spring Boot 4 / 3.4+) / `@MockBean` (Legacy)
 * **Where:** Above a field in a `@WebMvcTest` or `@SpringBootTest` class.
 * **What it does:** Injects a Mockito mock directly into the **Spring ApplicationContext**, replacing any real bean of that type.
+* **Spring Boot 4 Note:** In Spring Boot 4, the legacy `@MockBean` was **completely removed** and replaced by `@MockitoBean` from core Spring Framework.
+* **Import:** `import org.springframework.test.context.bean.override.mockito.MockitoBean;`
 * **Key Difference from `@Mock`:**
   * `@Mock` = Pure Mockito unit test (fast, no Spring Context loaded).
-  * `@MockBean` / `@MockitoBean` = Spring test (mock lives inside the Spring container).
+  * `@MockitoBean` = Spring test (the mock lives inside Spring's ApplicationContext).
 
 ### `@BeforeEach` / `@AfterEach`
 * **Where:** Above helper setup/teardown methods in a test class.

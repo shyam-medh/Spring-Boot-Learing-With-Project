@@ -22,7 +22,7 @@ This project evolves alongside my learning process. We are following a structure
 * **Phase 4:** Proper Application Architecture (Completed)
 * **Phase 5:** Validation & Error Handling (Completed)
 * **Phase 6:** Spring Security (Authentication & Authorization) (Completed)
-* **Phase 7:** Automated Testing ← *Up Next!*
+* **Phase 7:** Automated Testing (In Progress: 7.1 Unit Tests & 7.2 Controller Slice Tests Complete - 10/10 Passing!)
 * **Phase 8:** API Documentation (Swagger/OpenAPI)
 * **Phase 9:** Production Features (Actuator, Logging)
 * **Phase 10+:** Advanced concepts, Docker, CI/CD, and Cloud Deployment
@@ -31,13 +31,14 @@ For detailed learning context, check out `PROJECT_CONTEXT.md` and the notes in t
 
 ## 🛠️ Technology Stack
 * **Java 21**
-* **Spring Boot 3.x**
+* **Spring Boot 4.x (4.1.1)**
 * **PostgreSQL** (via Docker)
 * **Spring Boot Validation**
 * **Spring Boot Security**
 * **JJWT 0.11.5** (JSON Web Tokens)
+* **Automated Testing:** JUnit 5, Mockito, MockMvc, AssertJ, Hamcrest
 
-## 📁 Current Project Structure (Phase 6)
+## 📁 Current Project Structure (Phase 7)
 ```text
 spring boot/
 ├── backend/ (Spring Boot Application)
@@ -69,6 +70,11 @@ spring boot/
 │       └── exception/
 │           ├── GlobalExceptionHandler.java    (Customer Service Desk)
 │           └── ResourceNotFoundException.java (Custom 404 Error)
+│   └── src/test/java/com/devopshub/backend/
+│       ├── service/
+│       │   └── ProjectServiceTest.java        (Level 1: Unit Testing with Mockito - 4/4 passing)
+│       └── controller/
+│           └── ProjectControllerTest.java     (Level 2: Slice Testing with MockMvc - 6/6 passing)
 ├── notes/
 │   ├── Phase1_Fundamentals/
 │   ├── Phase2_REST_API/
@@ -82,7 +88,8 @@ spring boot/
 │   │   ├── 04_Registration_and_RBAC.md
 │   │   └── SPRING_SECURITY_FLOW.md
 │   ├── Phase7_Testing/
-│   │   └── 01_Unit_Testing_with_Mockito.md
+│   │   ├── 01_Unit_Testing_with_Mockito.md
+│   │   └── 02_Controller_Testing_with_MockMvc.md
 │   ├── ANNOTATIONS.md                   (Master Cheatsheet for all Spring Annotations)
 │   ├── MENTAL_MODELS.md                 (Key analogies, 3-Bucket model & concepts)
 │   └── Errors_and_Fixes/
