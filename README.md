@@ -21,8 +21,8 @@ This project evolves alongside my learning process. We are following a structure
 * **Phase 3:** Database & JPA (PostgreSQL) (Completed)
 * **Phase 4:** Proper Application Architecture (Completed)
 * **Phase 5:** Validation & Error Handling (Completed)
-* **Phase 6:** Spring Security (Authentication & Authorization) ← *In Progress (JWT Auth Complete, moving to RBAC & Registration)*
-* **Phase 7:** Automated Testing
+* **Phase 6:** Spring Security (Authentication & Authorization) (Completed)
+* **Phase 7:** Automated Testing ← *Up Next!*
 * **Phase 8:** API Documentation (Swagger/OpenAPI)
 * **Phase 9:** Production Features (Actuator, Logging)
 * **Phase 10+:** Advanced concepts, Docker, CI/CD, and Cloud Deployment
@@ -50,7 +50,7 @@ spring boot/
 │       │   ├── JwtUtil.java              (The Wristband Machine - generates & validates JWTs)
 │       │   └── JwtAuthenticationFilter.java (The Bouncer - intercepts requests & checks JWT)
 │       ├── controller/
-│       │   ├── AuthController.java       (The Login Desk - /api/auth/login)
+│       │   ├── AuthController.java       (The Auth Desk - /login & /register)
 │       │   └── ProjectController.java    (REST Controller for Projects)
 │       ├── service/
 │       │   ├── ProjectService.java       (Business Logic)
@@ -64,6 +64,7 @@ spring boot/
 │       ├── dto/
 │       │   ├── AuthRequest.java          (Login credentials DTO)
 │       │   ├── AuthResponse.java         (JWT Token DTO)
+│       │   ├── RegisterRequest.java      (User registration DTO)
 │       │   └── ProjectDTO.java           (Data Transfer Object)
 │       └── exception/
 │           ├── GlobalExceptionHandler.java    (Customer Service Desk)
@@ -79,6 +80,7 @@ spring boot/
 │   │   ├── 02_Security_Config_and_BCrypt.md
 │   │   ├── 03_Complete_JWT_Security_Story.md
 │   │   └── SPRING_SECURITY_FLOW.md
+│   ├── ANNOTATIONS.md                   (Master Cheatsheet for all Spring Annotations)
 │   ├── MENTAL_MODELS.md                 (Key analogies, 3-Bucket model & concepts)
 │   └── Errors_and_Fixes/
 ├── PROJECT_CONTEXT.md                    (Learning history and state)

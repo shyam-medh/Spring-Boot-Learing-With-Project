@@ -2,6 +2,7 @@ package com.devopshub.backend.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -41,17 +42,19 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             // 1. Disable CSRF (we use tokens, not cookies)
-            // CSRF (Cross-Site Request Forgery) attacks only happen when browsers automatically send cookies. 
-            // Since our app uses JWT tokens passed in the Authorization header, we don't need CSRF protection.
             .csrf(csrf -> csrf.disable())
 
             // 2. Make session STATELESS (no server-side memory)
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
-            // 3. Define door rules (Public vs Private)
+            // 3. Define door rules (Public vs Private vs Roles)
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**").permitAll() // Public front door
-                .anyRequest().authenticated()               // Everything else requires a valid token
+                .requestMatchers("/api/auth/**").permitAll() // Public (Login & Register)
+                // Role-based restrictions:
+                .requestMatchers(HttpMethod.GET, "/api/projects/**").hasAnyRole("USER", "ADMIN") // Both can view
+                .requestMatchers(HttpMethod.POST, "/api/projects/**").hasRole("ADMIN")           // Only ADMIN can create
+                .requestMatchers(HttpMethod.DELETE, "/api/projects/**").hasRole("ADMIN")         // Only ADMIN can delete
+                .anyRequest().authenticated()                                                    // Everything else requires login
             )
 
             // 4. Place our JWT scanner before Spring's default username/password check
