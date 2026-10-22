@@ -15,7 +15,7 @@ import com.devopshub.backend.dto.*;
 
 import com.devopshub.backend.service.ProjectService;
 
-@RequestMapping("api/projects")
+@RequestMapping("/api/projects")
 @RestController
 public class ProjectController {
 
