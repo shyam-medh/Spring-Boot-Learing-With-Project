@@ -147,14 +147,28 @@ backend/src/
 
 ## 7. The Next Chapter: DevOpsHub Core Domain Development Blueprint
 
-We are moving away from toy stubs into building the real developer platform using the **7-Step Enterprise Lifecycle**:
+> [!IMPORTANT]
+> **The Immutable Source of Truth:**  
+> The master entity relationships, table schemas, REST API matrix, and business constraints are formalized in **[DEVOPSHUB_SPECIFICATION.md](DEVOPSHUB_SPECIFICATION.md)**.
+
+We are moving away from toy stubs into building the real developer platform across 4 systematic stages using the **7-Step Enterprise Lifecycle**:
 
 ```text
-Step 1: Domain Modeling & Entities (Project, ProjectStatus enum, Auditing timestamps)
-Step 2: DTOs & Validation (ProjectCreateRequest, ProjectResponseDTO, strict constraints)
-Step 3: Repository Layer (Custom JPQL queries, pagination, sorting)
-Step 4: Business Service Layer (Unique project names, ownership verification)
-Step 5: REST Controller Layer (Proper 201 Created responses, location headers)
+Step 1: Domain Entities & Strict Enums (Project, ProjectStatus, Auditing timestamps)
+Step 2: Strongly Typed DTOs (ProjectCreateRequest, ProjectResponse, Jakarta Validation)
+Step 3: Spring Data JPA Repository (Custom JPQL queries, slug finders, existence checks)
+Step 4: Business Service Layer (Unique slug/name enforcement, DTO mapping)
+Step 5: REST Controller (Proper 201 Created responses, location headers, slug routes)
 Step 6: Automated Testing Suite (Unit, Slice, Security, and E2E regression tests)
 Step 7: OpenAPI & Swagger Documentation (Rich schema examples, tag groups)
 ```
+
+### The 4 Implementation Stages:
+1. **Stage 1: Core Project & Repository Engine (Immediate Focus):**  
+   Upgrade `Project` entity (`slug`, `description`, `gitRepoUrl`, `defaultBranch`, `ProjectStatus` enum), lifecycle auditing (`createdAt`, `updatedAt`), dedicated request/response DTOs, slug lookup, and 201 Created responses.
+2. **Stage 2: Environment Management Engine:**  
+   `Environment` entity, `EnvironmentType` (`DEV`, `STAGING`, `PROD`), `EnvironmentStatus` (`HEALTHY`, `DEGRADED`, `DOWN`), `@ManyToOne` relationship with `Project`.
+3. **Stage 3: Deployment Pipeline & Execution Engine:**  
+   `Deployment` entity, `DeploymentStatus` enum, release triggering with simulated build logs, and commit hash tracking.
+4. **Stage 4: Teams, Collaboration & RBAC Enforcement:**  
+   `Team` entity, user squad memberships, project ownership, and `@PreAuthorize` security.

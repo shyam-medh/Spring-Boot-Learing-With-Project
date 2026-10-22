@@ -39,12 +39,17 @@
 * **v0.5:** Validation & Standardized Errors applied
 * **v0.6:** Authentication (User Registration, Login via JWT)
 * **v0.7:** Test Suite established
-* **v0.8:** Swagger UI enabled
-* **v0.9:** Production ready (Actuator, Logging, Profiles)
-* **v1.0:** Docker Compose environment
-* **v1.1:** CI/CD Pipeline active
-* **v1.2:** Deployed to AWS
-* **v2.0+:** Advanced architecture (Async, Kafka, etc.)
+* **v0.8:** Swagger UI & 16/16 Automated Tests Passing (Current Stable Foundation)
+* **v1.0:** DevOpsHub Core Domain Platform:
+  * **Stage 1:** Core Project & Repository Engine (Slugs, Git repos, status enums, 201 Created)
+  * **Stage 2:** Environment Management Engine (Dev/Stage/Prod, health checks)
+  * **Stage 3:** Deployment Pipeline & Execution Engine (Releases, commit hashes, logs)
+  * **Stage 4:** Teams, Collaboration & RBAC (Squads, @PreAuthorize security)
+* **v1.1:** Production Ready (Actuator, Logging, Multi-environment Profiles)
+* **v1.2:** Docker & Docker Compose full-stack environment
+* **v1.3:** CI/CD Pipeline active (GitHub Actions)
+* **v1.4:** Deployed to AWS
+* **v2.0+:** Advanced architecture (Redis Caching, Async, Kafka, Microservices)
 
 ## 4. Practical Exercises
 
@@ -57,7 +62,7 @@
 
 ## 5. Recommended Git Branching Strategy
 
-* `main` - Stable, completed versions (e.g., v0.1, v0.2).
+* `main` - Stable, completed versions (e.g., v0.1, v0.2, v0.8).
 * `phase-X-feature` - Working branch for each phase (e.g., `phase-2-rest-api`).
 * We will merge into `main` at the end of each successful phase/version.
 
@@ -76,8 +81,9 @@
 ## 7. Database Evolution
 
 * **Phase 1-2:** No database (or simple in-memory list).
-* **Phase 3:** PostgreSQL setup. `users`, `projects`, `teams`, `tasks` tables.
-* **Future:** Flyway or Liquibase for database migrations (we will add this when appropriate).
+* **Phase 3:** PostgreSQL setup. `users`, `projects` tables.
+* **DevOpsHub Domain:** `projects` upgraded (slugs, git repos), `environments`, `deployments`, `teams`.
+* **Future:** Flyway or Liquibase for database migrations.
 
 ## 8. Testing Strategy
 
@@ -143,6 +149,20 @@
 * [x] 8.3: `@Tag`, `@Operation`, `@ApiResponse`, and `@Schema` annotations
 * [x] 8.4: Same-Origin Policy & CORS Architecture documentation
 
+**DevOpsHub Core Domain Platform Buildout (In Progress)**
+* [ ] **Stage 1: Core Project & Repository Engine**
+  * [ ] 1.1: `ProjectStatus` enum (`ACTIVE`, `MAINTENANCE`, `ARCHIVED`)
+  * [ ] 1.2: Upgrade `Project` entity (`slug`, `description`, `gitRepoUrl`, `defaultBranch`, auditing)
+  * [ ] 1.3: DTOs: `ProjectCreateRequest` & `ProjectResponse`
+  * [ ] 1.4: Repository query methods (`findBySlug`, `existsBySlug`, `existsByName`)
+  * [ ] 1.5: Service layer business logic & unique slug enforcement
+  * [ ] 1.6: Controller with 201 Created & slug lookups
+  * [ ] 1.7: Test suite regression (Unit, Slice, Security, E2E) & Swagger docs
+* [ ] **Stage 2: Environment Management Engine** (`DEV`, `STAGING`, `PROD`, health check status)
+* [ ] **Stage 3: Deployment Pipeline & Execution Engine** (commit hashes, logs, triggers)
+* [ ] **Stage 4: Teams, Collaboration & RBAC Enforcement** (squads, `@PreAuthorize`)
+
+**Future Production Phases**
 * [ ] Phase 9: Production Features (Observability, Actuator, Logging, Profiles)
 * [ ] Phase 10: Advanced Spring Boot (Caching, Async, Scheduling)
 * [ ] Phase 11: Microservices (Service boundaries, Feign Client, API Gateway)
