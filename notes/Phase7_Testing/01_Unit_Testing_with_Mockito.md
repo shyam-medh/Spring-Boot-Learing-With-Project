@@ -136,3 +136,7 @@ mvn test -Dtest=ProjectServiceTest
 # Run all tests in the entire project:
 mvn test
 ```
+
+---
+
+⬅️ **Back to [Phase 7 Testing Guide](README.md)** | **[Notes Master Index](../README.md)**

@@ -85,12 +85,12 @@ spring boot/
 
 ## 📖 Learning Notes & Knowledge Base
 
-All detailed concept explanations, architectural deep-dives, cheat sheets, and bug fixes are maintained in the **[notes/](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/README.md)** directory:
+All detailed concept explanations, architectural deep-dives, cheat sheets, and bug fixes are maintained in the **[notes/](notes/README.md)** directory:
 
-* 📚 **[DevOpsHub Master Notes Portal](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/README.md)** — Centralized curriculum index linking all phase guides.
-* 🏷️ **[Master Annotations Cheatsheet](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/ANNOTATIONS.md)** — Single source of truth for all Spring annotations with collapsible dropdowns.
-* 🧠 **[Mental Models & Analogies](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/MENTAL_MODELS.md)** — Intuitive analogies (Restaurant, Bouncer, Stunt Double, 4 Import Buckets, Front Door vs Circuit Breaker).
-* 🛠️ **[Errors & Troubleshooting Catalog](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/Errors_and_Fixes/README.md)** — Diagnostics and solutions for real-world bugs encountered.
+* 📚 **[DevOpsHub Master Notes Portal](notes/README.md)** — Centralized curriculum index linking all phase guides.
+* 🏷️ **[Master Annotations Cheatsheet](notes/ANNOTATIONS.md)** — Single source of truth for all Spring annotations with collapsible dropdowns.
+* 🧠 **[Mental Models & Analogies](notes/MENTAL_MODELS.md)** — Intuitive analogies (Restaurant, Bouncer, Stunt Double, 4 Import Buckets, Front Door vs Circuit Breaker).
+* 🛠️ **[Errors & Troubleshooting Catalog](notes/Errors_and_Fixes/README.md)** — Diagnostics and solutions for real-world bugs encountered.
 
 ---
 *Note: This README will be continuously updated as new features are added to DevOpsHub.*

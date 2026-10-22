@@ -20,11 +20,11 @@ Welcome to the **Phase 6 Spring Security & JWT Guide**! This directory details h
 
 | # | Note | Topic | Key Takeaway |
 |---|---|---|---|
-| **01** | [01_Basic_Security.md](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/Phase6_Security/01_Basic_Security.md) | Spring Security Defaults | How Spring Security locks down an application out-of-the-box with default credentials. |
-| **02** | [02_Security_Config_and_BCrypt.md](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/Phase6_Security/02_Security_Config_and_BCrypt.md) | SecurityConfig & BCrypt | Creating `SecurityFilterChain`, configuring public vs private endpoints, and hashing passwords. |
-| **03** | [03_Complete_JWT_Security_Story.md](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/Phase6_Security/03_Complete_JWT_Security_Story.md) | The Complete JWT Story | The definitive guide to JWT tokens, stateless filters, claims, and `SecurityContextHolder`. |
-| **04** | [04_Registration_and_RBAC.md](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/Phase6_Security/04_Registration_and_RBAC.md) | Registration & Roles (RBAC) | User registration, database seeding with `DataInitializer`, and role enforcement (`ROLE_USER`, `ROLE_ADMIN`). |
-| **05** | [SPRING_SECURITY_FLOW.md](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/Phase6_Security/SPRING_SECURITY_FLOW.md) | Visual Security Lifecycle | End-to-end flowchart from HTTP `Authorization: Bearer <token>` to `SecurityContextHolder`. |
+| **01** | [01_Basic_Security.md](01_Basic_Security.md) | Spring Security Defaults | How Spring Security locks down an application out-of-the-box with default credentials. |
+| **02** | [02_Security_Config_and_BCrypt.md](02_Security_Config_and_BCrypt.md) | SecurityConfig & BCrypt | Creating `SecurityFilterChain`, configuring public vs private endpoints, and hashing passwords. |
+| **03** | [03_Complete_JWT_Security_Story.md](03_Complete_JWT_Security_Story.md) | The Complete JWT Story | The definitive guide to JWT tokens, stateless filters, claims, and `SecurityContextHolder`. |
+| **04** | [04_Registration_and_RBAC.md](04_Registration_and_RBAC.md) | Registration & Roles (RBAC) | User registration, database seeding with `DataInitializer`, and role enforcement (`ROLE_USER`, `ROLE_ADMIN`). |
+| **05** | [SPRING_SECURITY_FLOW.md](SPRING_SECURITY_FLOW.md) | Visual Security Lifecycle | End-to-end flowchart from HTTP `Authorization: Bearer <token>` to `SecurityContextHolder`. |
 
 ---
 
@@ -35,4 +35,4 @@ Welcome to the **Phase 6 Spring Security & JWT Guide**! This directory details h
 
 ---
 
-⬅️ **Back to [Notes Master Index](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/README.md)**
+⬅️ **Back to [Notes Master Index](../README.md)**

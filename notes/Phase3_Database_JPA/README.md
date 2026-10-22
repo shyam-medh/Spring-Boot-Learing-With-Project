@@ -17,8 +17,8 @@ Welcome to the **Phase 3 Database & JPA Guide**! This directory details how to c
 
 | # | Note | Topic | Key Takeaway |
 |---|---|---|---|
-| **01** | [01_Database_Connection.md](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/Phase3_Database_JPA/01_Database_Connection.md) | PostgreSQL & Docker Setup | Running PostgreSQL container, configuring `127.0.0.1:5432`, and JDBC connection strings. |
-| **02** | [02_JPA_Entities.md](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/Phase3_Database_JPA/02_JPA_Entities.md) | JPA Entity Mapping | How `@Entity`, `@Id`, `@GeneratedValue(strategy = IDENTITY)`, and columns map Java fields to SQL columns. |
+| **01** | [01_Database_Connection.md](01_Database_Connection.md) | PostgreSQL & Docker Setup | Running PostgreSQL container, configuring `127.0.0.1:5432`, and JDBC connection strings. |
+| **02** | [02_JPA_Entities.md](02_JPA_Entities.md) | JPA Entity Mapping | How `@Entity`, `@Id`, `@GeneratedValue(strategy = IDENTITY)`, and columns map Java fields to SQL columns. |
 
 ---
 
@@ -29,9 +29,9 @@ Welcome to the **Phase 3 Database & JPA Guide**! This directory details how to c
 ---
 
 ## ⚠️ Common Pitfalls Encountered in this Phase
-* **Hibernate Dialect Error:** Forgetting to run Docker before starting Spring Boot (`Unable to determine Dialect without JDBC metadata`). See [01_Hibernate_Dialect.md](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/Errors_and_Fixes/01_Hibernate_Dialect.md).
-* **Calcutta Timezone Issue:** Legacy Windows timezone string unrecognized by Postgres. See [02_Timezone_Calcutta.md](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/Errors_and_Fixes/02_Timezone_Calcutta.md).
+* **Hibernate Dialect Error:** Forgetting to run Docker before starting Spring Boot (`Unable to determine Dialect without JDBC metadata`). See [01_Hibernate_Dialect.md](../Errors_and_Fixes/01_Hibernate_Dialect.md).
+* **Calcutta Timezone Issue:** Legacy Windows timezone string unrecognized by Postgres. See [02_Timezone_Calcutta.md](../Errors_and_Fixes/02_Timezone_Calcutta.md).
 
 ---
 
-⬅️ **Back to [Notes Master Index](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/README.md)**
+⬅️ **Back to [Notes Master Index](../README.md)**

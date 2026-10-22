@@ -31,3 +31,7 @@ private final ObjectMapper objectMapper = new ObjectMapper();
 ```
 
 This guarantees `objectMapper.writeValueAsString(dto)` is always ready to convert Java DTOs to JSON strings without Spring DI errors.
+
+---
+
+⬅️ **Back to [Errors Catalog](README.md)** | **[Notes Master Index](../README.md)**

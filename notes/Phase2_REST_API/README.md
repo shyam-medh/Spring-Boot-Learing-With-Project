@@ -17,11 +17,11 @@ Welcome to the **Phase 2 REST API Guide**! This directory details how to build p
 
 | # | Note | Topic | Key Takeaway |
 |---|---|---|---|
-| **01** | [01_HTTP_Methods_and_JSON.md](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/Phase2_REST_API/01_HTTP_Methods_and_JSON.md) | HTTP Methods & JSON | How client-server requests and responses communicate via JSON contracts. |
-| **02** | [02_DTOs.md](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/Phase2_REST_API/02_DTOs.md) | Data Transfer Objects (DTOs) | The "Passport Control" pattern — why entities should never be exposed directly to the web. |
-| **03** | [03_Dependency_Injection_Flow.md](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/Phase2_REST_API/03_Dependency_Injection_Flow.md) | Request to Service DI Flow | Step-by-step walkthrough of how an HTTP request travels from Controller to Service. |
-| **04** | [05_Path_Variables.md](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/Phase2_REST_API/05_Path_Variables.md) | Path Variables & Params | When to use `/api/projects/{id}` vs `/api/projects?status=ACTIVE`. |
-| **05** | [06_CRUD_Summary.md](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/Phase2_REST_API/06_CRUD_Summary.md) | REST CRUD Cheat Sheet | Complete cheat sheet of annotations, status codes, and HTTP methods for CRUD. |
+| **01** | [01_HTTP_Methods_and_JSON.md](01_HTTP_Methods_and_JSON.md) | HTTP Methods & JSON | How client-server requests and responses communicate via JSON contracts. |
+| **02** | [02_DTOs.md](02_DTOs.md) | Data Transfer Objects (DTOs) | The "Passport Control" pattern — why entities should never be exposed directly to the web. |
+| **03** | [03_Dependency_Injection_Flow.md](03_Dependency_Injection_Flow.md) | Request to Service DI Flow | Step-by-step walkthrough of how an HTTP request travels from Controller to Service. |
+| **04** | [05_Path_Variables.md](05_Path_Variables.md) | Path Variables & Params | When to use `/api/projects/{id}` vs `/api/projects?status=ACTIVE`. |
+| **05** | [06_CRUD_Summary.md](06_CRUD_Summary.md) | REST CRUD Cheat Sheet | Complete cheat sheet of annotations, status codes, and HTTP methods for CRUD. |
 
 ---
 
@@ -30,4 +30,4 @@ The Controller is the **Waiter**. It doesn't cook the food (business logic) or f
 
 ---
 
-⬅️ **Back to [Notes Master Index](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/README.md)**
+⬅️ **Back to [Notes Master Index](../README.md)**

@@ -12,7 +12,7 @@ This error occurs when Spring Boot (specifically Hibernate) tries to connect to 
 ## Common Causes
 1. **The Database is not running:** You forgot to start the Docker container (`docker start devopshub-db`).
 2. **Wrong Port / Network:** The database is running on a different port than `5432` or mapped improperly in Docker.
-3. **Connection Dropped on Handshake:** The database started, but rejected the incoming JDBC connection during initial handshake (e.g. Windows `Asia/Calcutta` timezone mismatch — see [02_Timezone_Calcutta.md](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/Errors_and_Fixes/02_Timezone_Calcutta.md)).
+3. **Connection Dropped on Handshake:** The database started, but rejected the incoming JDBC connection during initial handshake (e.g. Windows `Asia/Calcutta` timezone mismatch — see [02_Timezone_Calcutta.md](02_Timezone_Calcutta.md)).
 4. **Integration Tests (`@SpringBootTest`):** Unlike `@WebMvcTest` (which mocks the DB), `@SpringBootTest` attempts to connect to the real database. If Docker is offline or timezone handling is only in `main()`, integration tests crash with this error.
 
 ## The Fix
@@ -39,4 +39,8 @@ This error occurs when Spring Boot (specifically Hibernate) tries to connect to 
          hibernate:
            dialect: org.hibernate.dialect.PostgreSQLDialect
    ```
-4. If running automated tests, ensure UTC timezone is enforced globally via a `static` initializer block (see [02_Timezone_Calcutta.md](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/Errors_and_Fixes/02_Timezone_Calcutta.md)).
+4. If running automated tests, ensure UTC timezone is enforced globally via a `static` initializer block (see [02_Timezone_Calcutta.md](02_Timezone_Calcutta.md)).
+
+---
+
+⬅️ **Back to [Errors Catalog](README.md)** | **[Notes Master Index](../README.md)**

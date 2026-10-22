@@ -157,7 +157,7 @@ Even with `@WebMvcTest`, Spring Security's config awakens and looks for its cons
 
 When testing Spring Security, we never want to manually call `/api/auth/login` or copy/paste 100-character JWT tokens in Java tests.
 
-* **The Problem:** In [`SecurityConfig.java`](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/backend/src/main/java/com/devopshub/backend/config/SecurityConfig.java), endpoints are protected by roles (`ADMIN` vs `USER`).
+* **The Problem:** In [`SecurityConfig.java`](../backend/src/main/java/com/devopshub/backend/config/SecurityConfig.java), endpoints are protected by roles (`ADMIN` vs `USER`).
 * **The Hero (`@WithMockUser`):** Directly hands our test runner a **fake VIP badge** with a username and role.
 * **The 3 Security Test Cases:**
   1. **Anonymous Stranger (No Badge):** Rebuffed with `401 Unauthorized` or `403 Forbidden`.

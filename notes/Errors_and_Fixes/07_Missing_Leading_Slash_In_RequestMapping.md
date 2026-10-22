@@ -36,3 +36,7 @@ Always prepend a leading forward slash to `@RequestMapping`, `@GetMapping`, `@Po
 @RestController
 public class ProjectController { ... }
 ```
+
+---
+
+⬅️ **Back to [Errors Catalog](README.md)** | **[Notes Master Index](../README.md)**

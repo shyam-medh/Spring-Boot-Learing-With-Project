@@ -16,8 +16,8 @@ Welcome to the **Phase 4 Architecture Guide**! This directory details the **5-La
 
 | # | Note | Topic | Key Takeaway |
 |---|---|---|---|
-| **01** | [03_Layered_Architecture.md](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/Phase4_Architecture/03_Layered_Architecture.md) | The 5-Layer Pattern | Why enterprise apps split code across Controller, Service, Repository, Entity, and DTO layers. |
-| **02** | [04_Wiring_Service_to_Repository.md](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/Phase4_Architecture/04_Wiring_Service_to_Repository.md) | Wiring Service to Repository | How the Service consumes the Repository, maps entities to DTOs, and handles business validation. |
+| **01** | [03_Layered_Architecture.md](03_Layered_Architecture.md) | The 5-Layer Pattern | Why enterprise apps split code across Controller, Service, Repository, Entity, and DTO layers. |
+| **02** | [04_Wiring_Service_to_Repository.md](04_Wiring_Service_to_Repository.md) | Wiring Service to Repository | How the Service consumes the Repository, maps entities to DTOs, and handles business validation. |
 
 ---
 
@@ -40,4 +40,4 @@ Customer (Browser / Postman)
 
 ---
 
-⬅️ **Back to [Notes Master Index](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/README.md)**
+⬅️ **Back to [Notes Master Index](../README.md)**

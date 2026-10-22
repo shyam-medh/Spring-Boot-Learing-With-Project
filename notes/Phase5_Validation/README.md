@@ -17,8 +17,8 @@ Welcome to the **Phase 5 Validation & Error Handling Guide**! This directory det
 
 | # | Note | Topic | Key Takeaway |
 |---|---|---|---|
-| **01** | [01_Bean_Validation.md](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/Phase5_Validation/01_Bean_Validation.md) | Jakarta Bean Validation | Adding `@NotBlank`, `@Size`, and `@Valid` to DTOs to enforce input rules and trigger `400 Bad Request`. |
-| **02** | [02_Global_Exception_Handler.md](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/Phase5_Validation/02_Global_Exception_Handler.md) | Centralized Exception Handling | Building a `@RestControllerAdvice` class that catches `MethodArgumentNotValidException` and custom 404s. |
+| **01** | [01_Bean_Validation.md](01_Bean_Validation.md) | Jakarta Bean Validation | Adding `@NotBlank`, `@Size`, and `@Valid` to DTOs to enforce input rules and trigger `400 Bad Request`. |
+| **02** | [02_Global_Exception_Handler.md](02_Global_Exception_Handler.md) | Centralized Exception Handling | Building a `@RestControllerAdvice` class that catches `MethodArgumentNotValidException` and custom 404s. |
 
 ---
 
@@ -28,4 +28,4 @@ Welcome to the **Phase 5 Validation & Error Handling Guide**! This directory det
 
 ---
 
-⬅️ **Back to [Notes Master Index](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/README.md)**
+⬅️ **Back to [Notes Master Index](../README.md)**

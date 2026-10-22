@@ -206,3 +206,7 @@ mockMvc.perform(get("/api/projects"))                      // 1. ACT: Send HTTP 
 | **Speed** | Blazing fast (0.05s) | Fast (~1-2s) | Slower (~3-5s) |
 | **Mocking Tool** | `@Mock` (pure Mockito) | `@MockitoBean` (Spring-managed mock) | No mocks (or Testcontainers) |
 | **What it tests** | Business logic & calculations | HTTP routing, JSON, Validation | Real full user flow |
+
+---
+
+⬅️ **Back to [Phase 7 Testing Guide](README.md)** | **[Notes Master Index](../README.md)**

@@ -31,10 +31,10 @@ Welcome to the **Phase 7 Testing Master Guide**! This directory contains the com
 
 | Module | Guide Document | Test Class in Code | Primary Focus |
 |---|---|---|---|
-| **7.1** | [01_Unit_Testing_with_Mockito.md](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/Phase7_Testing/01_Unit_Testing_with_Mockito.md) | `ProjectServiceTest.java` | Fast, isolated business logic testing with `@Mock` & `@InjectMocks`. |
-| **7.2** | [02_Controller_Testing_with_MockMvc.md](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/Phase7_Testing/02_Controller_Testing_with_MockMvc.md) | `ProjectControllerTest.java` | Web slice testing with `MockMvc`, JSON mapping, and Bean Validation. |
-| **7.3** | [03_Security_Testing_with_MockUser.md](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/Phase7_Testing/03_Security_Testing_with_MockUser.md) | `ProjectSecurityTest.java` | Role-based authorization (`USER` vs `ADMIN`) and CSRF handling. |
-| **7.4** | [04_Integration_Testing_SpringBootTest.md](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/Phase7_Testing/04_Integration_Testing_SpringBootTest.md) | `ProjectIntegrationTest.java` | Real round-trip testing from HTTP request down to real PostgreSQL in Docker. |
+| **7.1** | [01_Unit_Testing_with_Mockito.md](01_Unit_Testing_with_Mockito.md) | `ProjectServiceTest.java` | Fast, isolated business logic testing with `@Mock` & `@InjectMocks`. |
+| **7.2** | [02_Controller_Testing_with_MockMvc.md](02_Controller_Testing_with_MockMvc.md) | `ProjectControllerTest.java` | Web slice testing with `MockMvc`, JSON mapping, and Bean Validation. |
+| **7.3** | [03_Security_Testing_with_MockUser.md](03_Security_Testing_with_MockUser.md) | `ProjectSecurityTest.java` | Role-based authorization (`USER` vs `ADMIN`) and CSRF handling. |
+| **7.4** | [04_Integration_Testing_SpringBootTest.md](04_Integration_Testing_SpringBootTest.md) | `ProjectIntegrationTest.java` | Real round-trip testing from HTTP request down to real PostgreSQL in Docker. |
 
 ---
 
@@ -71,3 +71,7 @@ mvn test -Dtest=ProjectIntegrationTest
 # Run ALL tests in the entire project
 mvn test
 ```
+
+---
+
+⬅️ **Back to [Notes Master Index](../README.md)**

@@ -10,7 +10,7 @@ In Phase 7.2, we tested our Controller with:
 ```
 We did that on purpose to test *only* the controller plumbing (URLs, JSON serialization, and `@Valid`).
 
-**BUT**, in [`SecurityConfig.java`](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/backend/src/main/java/com/devopshub/backend/config/SecurityConfig.java), we configured critical business rules:
+**BUT**, in [`SecurityConfig.java`](../../backend/src/main/java/com/devopshub/backend/config/SecurityConfig.java), we configured critical business rules:
 * `GET /api/projects/**` ➔ requires `hasAnyRole("USER", "ADMIN")`
 * `POST /api/projects/**` ➔ requires `hasRole("ADMIN")`
 * `DELETE /api/projects/**` ➔ requires `hasRole("ADMIN")`
@@ -130,4 +130,8 @@ mockMvc.perform(delete("/api/projects/1")
                 .with(csrf()))
         .andExpect(status().isOk());
 ```
+
+---
+
+⬅️ **Back to [Phase 7 Testing Guide](README.md)** | **[Notes Master Index](../README.md)**
 

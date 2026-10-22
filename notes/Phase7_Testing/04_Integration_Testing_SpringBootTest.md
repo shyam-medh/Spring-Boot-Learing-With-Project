@@ -98,6 +98,10 @@ void cleanDatabase() {
 
 ## 5. Important Prerequisites & Troubleshooting
 1. **Docker Must Be Running:** Because `@SpringBootTest` boots the real `DataSource`, your PostgreSQL container (`devopshub-db`) must be active (`docker start devopshub-db`).
-2. **UTC Timezone Static Initializer:** On Windows in regions with legacy timezone identifiers (like India's `Asia/Calcutta`), JUnit forks will default to Windows local time unless UTC is enforced via a `static { TimeZone.setDefault(TimeZone.getTimeZone("UTC")); }` block. (See [02_Timezone_Calcutta.md](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/Errors_and_Fixes/02_Timezone_Calcutta.md)).
-3. **Explicit Dialect:** Configure `spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect` in `application.yaml` so Hibernate doesn't fail on initial metadata inspection. (See [01_Hibernate_Dialect.md](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/Errors_and_Fixes/01_Hibernate_Dialect.md)).
+2. **UTC Timezone Static Initializer:** On Windows in regions with legacy timezone identifiers (like India's `Asia/Calcutta`), JUnit forks will default to Windows local time unless UTC is enforced via a `static { TimeZone.setDefault(TimeZone.getTimeZone("UTC")); }` block. (See [02_Timezone_Calcutta.md](../Errors_and_Fixes/02_Timezone_Calcutta.md)).
+3. **Explicit Dialect:** Configure `spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect` in `application.yaml` so Hibernate doesn't fail on initial metadata inspection. (See [01_Hibernate_Dialect.md](../Errors_and_Fixes/01_Hibernate_Dialect.md)).
+
+---
+
+⬅️ **Back to [Phase 7 Testing Guide](README.md)** | **[Notes Master Index](../README.md)**
 
