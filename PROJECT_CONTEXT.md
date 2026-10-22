@@ -1,95 +1,160 @@
-# DevOpsHub - Spring Boot Learning Context
+# DevOpsHub - Spring Boot Project Context & Engineering Blueprint 📖
 
-## LEARNING GOAL
-"Become capable of independently designing, developing, debugging, testing, containerizing and deploying Spring Boot applications."
+> [!NOTE]
+> **Project Mission:**  
+> "Become capable of independently designing, developing, debugging, testing, containerizing, and deploying production-grade Spring Boot applications from scratch."
 
-## CURRENT STATUS
-* **CURRENT PHASE:** 7
-* **CURRENT MODULE:** Automated Testing
-* **CURRENT LESSON:** Phase 7.4: `@SpringBootTest` End-to-End Integration Testing (COMPLETED)
-* **CURRENT CONCEPT:** End-to-End Testing with real PostgreSQL in Docker, zero mocks, `@SpringBootTest`, `@AutoConfigureMockMvc`, `@BeforeEach` cleanup, UTC static timezone handling
-* **STATUS:** Completed (15/15 tests passing across Service, Controller, Security, and E2E Integration)
-* **LAST COMPLETED CONCEPT:** Phase 7.4: Full End-to-End Integration Testing with `@SpringBootTest` (2/2 passing)
-* **NEXT CONCEPT:** Phase 8: API Documentation (OpenAPI / Swagger UI)
-* **CURRENT PROJECT MILESTONE:** v0.7 - Complete Automated Test Suite (15/15 Tests Passing)
-* **CURRENT IMPLEMENTATION TASK:** Verified `ProjectIntegrationTest.java` (2/2 passing), `ProjectSecurityTest.java` (3/3 passing), `ProjectControllerTest.java` (6/6 passing), `ProjectServiceTest.java` (4/4 passing) -> 15/15 passing tests!
+---
 
-## SESSION HANDOFF
-* **What I learned recently:**
-  - **Spring Security & JWT:** Why HTTP is stateless. The 3-Bucket Mental Model (User ➔ Token ➔ Rules). How `JwtAuthenticationFilter` intercepts requests and sets authentication on `SecurityContextHolder`. Role-Based Access Control (RBAC) with `hasRole()` and `hasAnyRole()`.
-  - **Automated Testing:** The Testing Pyramid (Unit ➔ Web/Integration ➔ End-to-End). Why we mock dependencies using Mockito (The Movie Stunt Double). The 3 A's pattern (Arrange - Act - Assert). How to test happy paths and sad paths (`assertThrows`).
-  - **Controller Testing Mental Models:** The 3 Characters (Waiter under test, Fake Postman `MockMvc`, Stunt Chef `@MockitoBean`). The 4 Import Buckets (Postman Buttons `get/post/delete`, Inspectors `status/jsonPath/content`, Stunt Chef `when/doNothing`, Translator `ObjectMapper`). Why static imports make tests read like English. Why Spring Security requires dummy mocks (`JwtAuthenticationFilter`, `JwtUtil`, `CustomUserDetailsService`) in `@WebMvcTest`.
-  - **Security Testing with MockMvc:** Why MockMvc enforces CSRF on mutating requests (`.with(csrf())`). Why stateless apps reset thread-locals and need `.with(user("admin").roles("ADMIN"))` bound to the request. Why unauthenticated requests default to `403 Forbidden`.
-  - **End-to-End Integration Testing (`@SpringBootTest`):** Zero mocks. Full ApplicationContext boot connecting to real PostgreSQL in Docker. Why JUnit never calls `main(String[] args)` and why UTC timezone must be set via `static { ... }` initializer block to prevent Windows `Asia/Calcutta` connection drops.
-* **What I implemented:**
-  - `ProjectServiceTest.java`: 4 unit tests covering `getAllProjectS()`, `getProjectById()`, exception handling, and `addProject()`.
-  - `ProjectControllerTest.java`: 6 controller slice tests with `MockMvc` covering GET, POST, DELETE, 404 handling, and Bean Validation 400.
-  - `ProjectSecurityTest.java`: 3 security integration tests verifying anonymous 403, USER role 403, and ADMIN role 200.
-  - `ProjectIntegrationTest.java`: 2 end-to-end integration tests verifying complete round-trip create & read and delete against live PostgreSQL in Docker.
-  - `notes/Phase7_Testing/`: Comprehensive testing guides for all 4 testing levels.
-  - Dedicated `README.md` portals for all phases (Phases 1 through 7) and `notes/Errors_and_Fixes/README.md`.
-* **Problems encountered:**
-  - `MockBean` cannot be resolved in Spring Boot 4.
-  - `@WebMvcTest` package location changed in Spring Boot 4 modularized starters.
-  - `Unable to determine Dialect without JDBC metadata` during `@SpringBootTest` caused by Docker offline and Windows `Asia/Calcutta` timezone mismatch in test runner forks.
-* **Problems solved:**
-  - In Spring Boot 4, legacy `@MockBean` was removed and replaced by `@MockitoBean`.
-  - `@WebMvcTest` and `@AutoConfigureMockMvc` are located in `org.springframework.boot.webmvc.test.autoconfigure.*`.
-  - Enforced UTC timezone globally via `static { TimeZone.setDefault(TimeZone.getTimeZone("UTC")); }` in `BackendApplication` and test classes, and configured explicit dialect in `application.yaml`.
-* **Current Git branch:** main
-* **Current project state:** Fully tested Spring Boot backend with 15/15 passing tests across all layers!
+## 1. Executive Status & Milestone Tracker
 
-## LEARNING PROGRESS
-* [x] Phase 0: Prerequisites (Java check, OOP, Maven)
-* [x] Phase 1: Spring Fundamentals (IoC, DI, Beans, `@Component`, `@Configuration`)
-* [x] Phase 2: REST API Development (Controllers, DTOs, CRUD, `@PathVariable`, `@RequestBody`)
-* [x] Phase 3: Database & JPA (PostgreSQL, Docker, `@Entity`, `@Id`, Spring Data Repositories)
-* [x] Phase 4: Proper Application Architecture (5-Layer Pattern: Controller, Service, Repo, Entity, DTO)
-* [x] Phase 5: Validation & Error Handling (`@Valid`, `@NotBlank`, `@RestControllerAdvice`, Custom 404)
-* [x] Phase 6: Spring Security (BCrypt, Custom UserDetailsService, JWT Stateless Filter, Registration, RBAC)
-* [x] Phase 7: Testing (COMPLETED - 15/15 tests passing across all 4 testing levels!)
-* [ ] Phase 8: API Documentation (OpenAPI / Swagger)
-* [ ] Phase 9: Production Features (Actuator, Logging, Profiles)
-* [ ] Phase 10: Advanced Spring Boot (Caching, Async, Scheduling)
-* [ ] Phase 11: Microservices (Optional)
-* [ ] Phase 12: Messaging & Event-Driven Architecture (Kafka / RabbitMQ)
-* [ ] Phase 13: Docker (Multi-stage Dockerfile, Docker Compose)
-* [ ] Phase 14: CI/CD (GitHub Actions Pipeline)
-* [ ] Phase 15: Cloud Deployment (AWS)
+* **CURRENT PHASE:** Transitioning from Foundation to Core Application Domain
+* **COMPLETED PHASES:** Phase 0 through Phase 8 (100% Completed)
+* **CURRENT STATUS:** 
+  * ✅ **16 / 16 Automated Tests Passing** across all 4 levels of the testing pyramid.
+  * ✅ **Interactive Swagger UI Live** at `http://localhost:8080/swagger-ui/index.html`.
+  * ✅ **OpenAPI 3 Specification Live** at `http://localhost:8080/v3/api-docs`.
+  * ✅ **Live PostgreSQL Database** running in Docker container `devopshub-db` on port `5432`.
+* **CURRENT MILESTONE:** `v0.8` - Fully Documented & Tested REST API Foundation
+* **NEXT MILESTONE:** `v1.0` - DevOpsHub Core Domain Engine (Upgraded Project Entity, Enums, Git Repositories, Timestamps, Auditing, and Pagination)
+* **CURRENT GIT BRANCH:** `main` (Clean working tree)
 
-## WHAT I CURRENTLY KNOW
-* **Spring Boot Core:** Beans, Dependency Injection, Inversion of Control, Maven configuration.
-* **REST APIs:** `@RestController`, `@GetMapping`, `@PostMapping`, `@DeleteMapping`, DTOs, HTTP verbs and status codes.
-* **Databases & JPA:** Docker PostgreSQL containerization, Spring Data JPA, Hibernate Entities (`@Entity`, `@Table`, `@Id`, `@GeneratedValue`), Custom repository queries (`findByUsername`).
-* **Clean Architecture:** 5-layer monolithic pattern separating Presentation, Business, and Persistence layers.
-* **Validation & Errors:** Jakarta Bean Validation (`@Valid`, `@NotBlank`), `@RestControllerAdvice`, centralized customer service desk pattern.
-* **Security & Auth:** Password hashing with BCrypt, `UserDetailsService`, JWT token lifecycle (builder/parser), stateless filter chains (`OncePerRequestFilter`), `SecurityContextHolder`, RBAC.
-* **Testing:** JUnit 5 (`@Test`, `@ExtendWith`), Mockito (`@Mock`, `@InjectMocks`, `when().thenReturn()`, `verify()`), AssertJ (`assertThat()`), Arrange-Act-Assert.
+---
 
-## MY WEAK AREAS & REMINDERS
-* **Don't memorize class names or boilerplate:** Rely on the 3-Bucket Mental Model and IDE autocomplete.
-* **HTTP is stateless:** Remember that servers have complete amnesia between requests without tokens or sessions.
-* **Single Source of Truth:** Use `notes/ANNOTATIONS.md` for all annotation lookups.
+## 2. Comprehensive Curriculum & Phase Progress
 
-## PROJECT ARCHITECTURE
+| Phase | Title | Core Concepts Mastered | Status |
+|---|---|---|---|
+| **Phase 0** | **Prerequisites** | Java 21, OOP principles, Maven wrapper (`mvnw`), terminal navigation | ✅ Completed |
+| **Phase 1** | **Spring Fundamentals** | IoC, Dependency Injection, Beans, `@Component`, `@Configuration`, ApplicationContext RAM HashMap | ✅ Completed |
+| **Phase 2** | **REST API Development** | DispatcherServlet, `@RestController`, HTTP Verbs (GET, POST, DELETE), `@PathVariable`, `@RequestBody`, DTOs | ✅ Completed |
+| **Phase 3** | **Database & JPA** | Docker PostgreSQL, Hibernate ORM, `@Entity`, `@Id`, `@GeneratedValue`, Spring Data JPA Repositories | ✅ Completed |
+| **Phase 4** | **Application Architecture**| The 5-Layer Monolith (Controller ➔ Service ➔ Repository ➔ Entity ➔ DTO), single-responsibility rule | ✅ Completed |
+| **Phase 5** | **Validation & Errors** | Jakarta Bean Validation (`@Valid`, `@NotBlank`), `@RestControllerAdvice`, standardized JSON errors, custom 404 | ✅ Completed |
+| **Phase 6** | **Spring Security & JWT** | BCrypt password hashing, `UserDetailsService`, JWT token lifecycle, `OncePerRequestFilter`, `ThreadLocal`, RBAC | ✅ Completed |
+| **Phase 7** | **Automated Testing** | 4-level testing pyramid: Unit (Mockito), Slice (`@WebMvcTest`), Security (`@WithMockUser`), E2E (`@SpringBootTest`) (16/16 Passing) | ✅ Completed |
+| **Phase 8** | **API Documentation** | OpenAPI 3, Swagger UI, `OpenApiConfig`, JWT Authorize button, `@Tag`, `@Operation`, `@Schema`, CORS architecture | ✅ Completed |
+| **Phase 9** | **Production Features** | Spring Boot Actuator, Health checks, Observability, SLF4J / Logback logging, Multi-Environment Profiles | ⏳ Next |
+| **Phase 10** | **Advanced Spring Boot** | Redis Caching, Asynchronous execution (`@Async`), Scheduled tasks (`@Scheduled`) | ⏳ Planned |
+| **Phase 11** | **Microservices** | Service boundaries, Spring Cloud Gateway, OpenFeign, Service Registry (Eureka / Consul) | ⏳ Planned |
+| **Phase 12** | **Event-Driven Architecture**| Apache Kafka, Producers, Consumers, Event Topics, Asynchronous messaging | ⏳ Planned |
+| **Phase 13** | **Docker Containerization** | Multi-stage Dockerfile, Docker Compose full-stack orchestration | ⏳ Planned |
+| **Phase 14** | **CI/CD Pipelines** | GitHub Actions (Automated build, test verification, container registry publish) | ⏳ Planned |
+| **Phase 15** | **Cloud Deployment** | AWS (EC2 / ECS, RDS PostgreSQL, IAM security, Load Balancer) | ⏳ Planned |
+
+---
+
+## 3. Technology Stack & Dependencies
+
+* **Language & Runtime:** Java 21 (OpenJDK 64-Bit Server VM)
+* **Framework:** Spring Boot 4.1.1 (Spring Framework 7.0.9)
+* **Web Server:** Embedded Apache Tomcat 11
+* **Database & Driver:** PostgreSQL 15 (Docker) + `org.postgresql:postgresql:42.7.13`
+* **ORM & Connection Pooling:** Spring Data JPA + Hibernate Core 7.4.5 + HikariCP 7.0.2
+* **Data Validation:** Jakarta Bean Validation (`spring-boot-starter-validation` / Hibernate Validator)
+* **Security & Auth:** Spring Security 7.0.9 + BCrypt + JJWT (Java JWT) 0.11.5 (`jjwt-api`, `jjwt-impl`, `jjwt-jackson`)
+* **API Documentation:** SpringDoc OpenAPI Starter WebMVC UI 3.1.1 (`org.springdoc`)
+* **Testing Suite:** JUnit 5 (Jupiter), Mockito (Core & ByteBuddy), Spring Test (`MockMvc`, `@WebMvcTest`, `@SpringBootTest`, `@MockitoBean`), AssertJ, Hamcrest Matchers
+
+---
+
+## 4. Current Application File Registry
+
 ```text
-Client (Postman / Browser)
-         │
-         ▼
-[JwtAuthenticationFilter] ──► Checks "Authorization: Bearer <token>"
-         │
-         ▼
-[SecurityConfig] ──────────► Enforces RBAC & Public vs Private routes
-         │
-         ▼
-[Controllers] ─────────────► ProjectController / AuthController (The Waiters)
-         │
-         ▼
-[Services] ────────────────► ProjectService / CustomUserDetailsService (The Chefs)
-         │
-         ▼
-[Repositories] ────────────► ProjectRepository / UserRepository (The Pantry)
-         │
-         ▼
-[PostgreSQL Database] ─────► Docker container `devopshub-db`
+backend/src/
+├── main/java/com/devopshub/backend/
+│   ├── BackendApplication.java            # App entry point & JVM UTC static initializer
+│   ├── config/
+│   │   ├── SecurityConfig.java            # SecurityFilterChain, BCrypt, RBAC, whitelist rules
+│   │   ├── OpenApiConfig.java             # OpenAPI 3 info & BearerAuth JWT security scheme
+│   │   └── DataInitializer.java           # Startup DB seeder for default admin account
+│   ├── controller/
+│   │   ├── AuthController.java            # /api/auth/register & /login endpoints (@Tag, @Operation)
+│   │   └── ProjectController.java         # /api/projects CRUD REST endpoints (@Tag, @Operation)
+│   ├── service/
+│   │   ├── ProjectService.java            # Project business rules, entity mapping, DB delegation
+│   │   └── CustomUserDetailsService.java  # Bridge between PostgreSQL User and Spring UserDetails
+│   ├── repository/
+│   │   ├── ProjectRepository.java         # Spring Data JPA interface for projects table
+│   │   └── UserRepository.java            # Spring Data JPA interface for users table
+│   ├── entity/
+│   │   ├── Project.java                   # JPA entity mapped to "projects" SQL table
+│   │   └── User.java                      # JPA entity mapped to "users" SQL table
+│   ├── dto/
+│   │   ├── ProjectDTO.java                # Project transfer payload with @Schema & @NotBlank
+│   │   ├── AuthRequest.java               # Login credentials payload with @Schema
+│   │   ├── AuthResponse.java              # JWT bearer token response with @Schema
+│   │   └── RegisterRequest.java           # Registration payload with @Schema
+│   ├── security/
+│   │   ├── JwtUtil.java                   # Cryptographic JWT printer & scanner (HMAC-SHA256)
+│   │   └── JwtAuthenticationFilter.java   # OncePerRequestFilter checking tokens & ThreadLocal context
+│   └── exception/
+│       ├── GlobalExceptionHandler.java    # @RestControllerAdvice centralized error translator
+│       └── ResourceNotFoundException.java # Custom runtime exception triggering 404 Not Found
+│
+└── test/java/com/devopshub/backend/
+    ├── BackendApplicationTests.java       # Context boot smoke test with UTC static block (1 test)
+    ├── service/
+    │   └── ProjectServiceTest.java        # Level 1: Pure Mockito unit tests (@Mock/@InjectMocks) (4 tests)
+    ├── controller/
+    │   ├── ProjectControllerTest.java     # Level 2: Web slice tests with MockMvc (@MockitoBean) (6 tests)
+    │   └── ProjectSecurityTest.java       # Level 2.5: Role security tests with MockMvc (3 tests)
+    └── integration/
+        └── ProjectIntegrationTest.java    # Level 3: Full E2E tests with real PostgreSQL in Docker (2 tests)
+```
+
+---
+
+## 5. Automated Test Suite Registry (16 / 16 Passing)
+
+| Test Class | Level | Test Method | What It Verifies |
+|---|---|---|---|
+| `ProjectServiceTest` | Level 1 (Unit) | `getAllProjects_shouldReturnProjectList()` | Verifies service calls `repo.findAll()` and maps entities to DTOs |
+| `ProjectServiceTest` | Level 1 (Unit) | `getProjectById_whenProjectExists_shouldReturnProject()` | Verifies retrieval by ID when record exists |
+| `ProjectServiceTest` | Level 1 (Unit) | `getProjectById_whenProjectDoesNotExist_shouldThrowException()` | Verifies `ResourceNotFoundException` is thrown when ID not found |
+| `ProjectServiceTest` | Level 1 (Unit) | `addProject_shouldSaveAndReturnProject()` | Verifies service maps DTO to entity and calls `repo.save()` |
+| `ProjectControllerTest` | Level 2 (Slice) | `shouldReturnAllProjects()` | Verifies `GET /api/projects` returns `200 OK` and JSON array |
+| `ProjectControllerTest` | Level 2 (Slice) | `shouldReturnProjectById_WhenExists()` | Verifies `GET /api/projects/{id}` returns `200 OK` and matching JSON |
+| `ProjectControllerTest` | Level 2 (Slice) | `shouldReturn404_WhenProjectNotFound()` | Verifies `GET /api/projects/999` triggers `GlobalExceptionHandler` 404 |
+| `ProjectControllerTest` | Level 2 (Slice) | `shouldCreateProject_WhenValid()` | Verifies `POST /api/projects` returns `200 OK` when payload valid |
+| `ProjectControllerTest` | Level 2 (Slice) | `shouldReturn400_WhenProjectNameIsBlank()` | Verifies `@Valid` intercepts blank names before method executes |
+| `ProjectControllerTest` | Level 2 (Slice) | `shouldDeleteProject()` | Verifies `DELETE /api/projects/{id}` returns `200 OK` |
+| `ProjectSecurityTest` | Level 2.5 (Security) | `shouldRejectAnonymousUser_WhenDeletingProject()` | Verifies stranger with no token gets `403 Forbidden` |
+| `ProjectSecurityTest` | Level 2.5 (Security) | `shouldRejectRegularUser_WhenDeletingProject()` | Verifies `@WithMockUser(roles="USER")` gets `403 Forbidden` on admin route |
+| `ProjectSecurityTest` | Level 2.5 (Security) | `shouldAllowAdminUser_WhenDeletingProject()` | Verifies `@WithMockUser(roles="ADMIN")` with `.with(csrf())` gets `200 OK` |
+| `ProjectIntegrationTest`| Level 3 (E2E) | `shouldCreateAndRetrieveProject_EndToEnd()` | Full round-trip: HTTP POST ➔ real PostgreSQL in Docker ➔ HTTP GET verification |
+| `ProjectIntegrationTest`| Level 3 (E2E) | `shouldDeleteProject_EndToEnd()` | Full round-trip: inserts row, sends HTTP DELETE, verifies row deleted in DB |
+| `BackendApplicationTests`| Level 3 (Context) | `contextLoads()` | Verifies Spring ApplicationContext boots cleanly with all beans wired |
+
+---
+
+## 6. Real-World Troubleshooting & Solutions Archive
+
+1. **`MockBean` Missing in Spring Boot 4:**
+   * *Cause:* Spring Boot 4 modularized test starters and replaced Spring Boot's legacy `@MockBean` with core Spring Framework's `@MockitoBean`.
+   * *Solution:* Updated imports to `org.springframework.test.context.bean.override.mockito.MockitoBean`.
+2. **`Unable to determine Dialect without JDBC metadata`:**
+   * *Cause:* Windows host ran in `Asia/Calcutta` timezone. When JUnit executed `@SpringBootTest` in a forked JVM, the PostgreSQL driver sent `TimeZone: "Asia/Calcutta"` to Linux PostgreSQL in Docker, which rejected the connection string during dialect discovery.
+   * *Solution:* 
+     1. Added `static { TimeZone.setDefault(TimeZone.getTimeZone("UTC")); }` in `BackendApplication.java`, `ProjectIntegrationTest.java`, and `BackendApplicationTests.java`.
+     2. Configured `<argLine>-Duser.timezone=UTC</argLine>` in `maven-surefire-plugin` in `pom.xml`.
+     3. Explicitly defined `hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect` in `application.yaml`.
+3. **Swagger UI 403 Forbidden Errors:**
+   * *Cause:* Spring Security's filter chain blocks all unauthenticated paths by default.
+   * *Solution:* Whitelisted `/v3/api-docs/**`, `/swagger-ui/**`, and `/swagger-ui.html` via `.permitAll()` in `SecurityConfig.java`.
+
+---
+
+## 7. The Next Chapter: DevOpsHub Core Domain Development Blueprint
+
+We are moving away from toy stubs into building the real developer platform using the **7-Step Enterprise Lifecycle**:
+
+```text
+Step 1: Domain Modeling & Entities (Project, ProjectStatus enum, Auditing timestamps)
+Step 2: DTOs & Validation (ProjectCreateRequest, ProjectResponseDTO, strict constraints)
+Step 3: Repository Layer (Custom JPQL queries, pagination, sorting)
+Step 4: Business Service Layer (Unique project names, ownership verification)
+Step 5: REST Controller Layer (Proper 201 Created responses, location headers)
+Step 6: Automated Testing Suite (Unit, Slice, Security, and E2E regression tests)
+Step 7: OpenAPI & Swagger Documentation (Rich schema examples, tag groups)
 ```

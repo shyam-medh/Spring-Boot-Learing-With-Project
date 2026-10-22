@@ -49,7 +49,10 @@ public class SecurityConfig {
 
             // 3. Define door rules (Public vs Private vs Roles)
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**").permitAll() // Public (Login & Register)
+                // Public doors: Auth + Interactive Swagger/OpenAPI Documentation
+                .requestMatchers("/api/auth/**").permitAll()
+                .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
+                
                 // Role-based restrictions:
                 .requestMatchers(HttpMethod.GET, "/api/projects/**").hasAnyRole("USER", "ADMIN") // Both can view
                 .requestMatchers(HttpMethod.POST, "/api/projects/**").hasRole("ADMIN")           // Only ADMIN can create

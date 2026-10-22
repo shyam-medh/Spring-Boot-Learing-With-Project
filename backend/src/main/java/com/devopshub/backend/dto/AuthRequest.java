@@ -1,12 +1,16 @@
 package com.devopshub.backend.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 
+@Schema(description = "Credentials for user login")
 public class AuthRequest {
 
+    @Schema(description = "Account username", example = "admin_user")
     @NotBlank(message = "Username cannot be empty")
     private String username;
 
+    @Schema(description = "Account password", example = "adminPass123")
     @NotBlank(message = "Password cannot be empty")
     private String password;
 

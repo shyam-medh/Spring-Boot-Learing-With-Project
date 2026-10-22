@@ -1,14 +1,20 @@
 package com.devopshub.backend.dto;
 
-import jakarta.validation.constraints.NotBlank; // Add Import
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotBlank;
 
+@Schema(description = "Data Transfer Object representing a DevOpsHub project")
 public class ProjectDTO {
+
+    @Schema(description = "Unique ID of the project (assigned by database)", example = "1", accessMode = Schema.AccessMode.READ_ONLY)
     private Long id;
 
-    @NotBlank(message = "Project name can't be empty") // Add Rule
+    @Schema(description = "Name of the DevOps project", example = "Kubernetes Infrastructure Migration")
+    @NotBlank(message = "Project name can't be empty")
     private String name;
 
-    @NotBlank(message = "Project status can't be empty") // Add Rule
+    @Schema(description = "Current operational status of the project", example = "ACTIVE")
+    @NotBlank(message = "Project status can't be empty")
     private String status;
 
     // creating the getter and setter and constructor

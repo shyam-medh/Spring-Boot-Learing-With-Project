@@ -37,7 +37,9 @@ notes/
 │   └── README.md
 ├── Phase6_Security/                   (Spring Security, BCrypt, JWT Filters, RBAC)
 │   └── README.md
-└── Phase7_Testing/                    (The Testing Pyramid: Unit, Slice, Security, E2E)
+├── Phase7_Testing/                    (The Testing Pyramid: Unit, Slice, Security, E2E)
+│   └── README.md
+└── Phase8_Documentation/              (OpenAPI 3, Swagger UI, Interactive Docs, CORS)
     └── README.md
 ```
 
@@ -81,6 +83,11 @@ notes/
 * **[02_Controller_Testing_with_MockMvc.md](Phase7_Testing/02_Controller_Testing_with_MockMvc.md)**: Level 2: Web slice testing with `@WebMvcTest` and the 4 Import Buckets.
 * **[03_Security_Testing_with_MockUser.md](Phase7_Testing/03_Security_Testing_with_MockUser.md)**: Level 2.5: Role-based testing with MockMvc and `.with(csrf())`.
 * **[04_Integration_Testing_SpringBootTest.md](Phase7_Testing/04_Integration_Testing_SpringBootTest.md)**: Level 3: Full end-to-end testing with `@SpringBootTest` and real PostgreSQL.
+
+### 8. [Phase 8: API Documentation](Phase8_Documentation/README.md)
+* **[Phase 8 Master Guide](Phase8_Documentation/README.md)**: Overview of self-updating documentation and Swagger UI.
+* **[01_OpenAPI_and_Swagger_Deep_Dive.md](Phase8_Documentation/01_OpenAPI_and_Swagger_Deep_Dive.md)**: OpenAPI 3 vs Swagger UI, SpringDoc starter, `OpenApiConfig`, JWT Authorize padlock button, `@Tag`, `@Operation`, and `@Schema`.
+* **[02_CORS_and_Frontend_Integration.md](Phase8_Documentation/02_CORS_and_Frontend_Integration.md)**: Why frontends need backend permission, Same-Origin Policy (SOP), Preflight `OPTIONS` requests, and Spring Boot CORS configuration.
 
 ---
 

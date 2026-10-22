@@ -22,9 +22,9 @@ This project evolves alongside my learning process. We are following a structure
 * **Phase 4:** Proper Application Architecture (Completed)
 * **Phase 5:** Validation & Error Handling (Completed)
 * **Phase 6:** Spring Security (Authentication & Authorization) (Completed)
-* **Phase 7:** Automated Testing (In Progress: 7.1 Unit, 7.2 Controller, and 7.3 Security Tests Complete - 13/13 Passing!)
-* **Phase 8:** API Documentation (Swagger/OpenAPI)
-* **Phase 9:** Production Features (Actuator, Logging)
+* **Phase 7:** Automated Testing (Completed: 16/16 Tests Passing across all 4 levels)
+* **Phase 8:** API Documentation (Completed: OpenAPI 3 & Interactive Swagger UI)
+* **Phase 9:** Production Features (Actuator, Logging, Profiles)
 * **Phase 10+:** Advanced concepts, Docker, CI/CD, and Cloud Deployment
 
 For detailed learning context, check out `PROJECT_CONTEXT.md` and the notes in the `notes/` directory.
@@ -36,16 +36,18 @@ For detailed learning context, check out `PROJECT_CONTEXT.md` and the notes in t
 * **Spring Boot Validation**
 * **Spring Boot Security**
 * **JJWT 0.11.5** (JSON Web Tokens)
+* **API Documentation:** SpringDoc OpenAPI 3, Swagger UI (`springdoc-openapi-starter-webmvc-ui` 3.1.1)
 * **Automated Testing:** JUnit 5, Mockito, MockMvc, AssertJ, Hamcrest
 
-## 📁 Current Project Structure (Phase 7)
+## 📁 Current Project Structure (Phase 8)
 ```text
 spring boot/
 ├── backend/ (Spring Boot Application)
 │   └── src/main/java/com/devopshub/backend/
-│       ├── BackendApplication.java       (Entry Point)
+│       ├── BackendApplication.java       (Entry Point & UTC Global Initializer)
 │       ├── config/
-│       │   ├── SecurityConfig.java       (The Club Manager - Security Rules & Filter Chain)
+│       │   ├── SecurityConfig.java       (The Club Manager - Security Rules & Whitelist)
+│       │   ├── OpenApiConfig.java        (The Menu Designer - OpenAPI Metadata & JWT Scheme)
 │       │   └── DataInitializer.java      (Seeds admin user into DB on startup)
 │       ├── security/
 │       │   ├── JwtUtil.java              (The Wristband Machine - generates & validates JWTs)

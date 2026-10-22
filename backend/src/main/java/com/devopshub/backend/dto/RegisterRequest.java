@@ -1,16 +1,21 @@
 package com.devopshub.backend.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 
+@Schema(description = "Details required for registering a new user")
 public class RegisterRequest {
 
+    @Schema(description = "Desired unique username", example = "shyam_admin")
     @NotBlank(message = "Username cannot be empty")
     private String username;
 
+    @Schema(description = "Secure password for the account", example = "DevOpsSecPass!2026")
     @NotBlank(message = "Password cannot be empty")
     private String password;
 
-    private String role; // Optional: e.g. "USER" or "ADMIN". Defaults to "USER" if blank
+    @Schema(description = "Assigned user role (e.g. 'USER' or 'ADMIN'). Defaults to 'USER' if omitted.", example = "ADMIN")
+    private String role;
 
     public RegisterRequest() {
     }

@@ -131,17 +131,22 @@
 * [x] 6.5: JWT Validation Filters
 * [x] 6.6: Role-Based Authorization
 
-**Phase 7: Testing**
+**Phase 7: Testing (Completed)**
 * [x] 7.1: Unit Testing with JUnit 5
 * [x] 7.2: Mocking with Mockito (Testing Services)
 * [x] 7.3: Controller & Security Testing (`@WebMvcTest`, MockMvc, Roles & SecurityFilterChain)
-* [ ] 7.4: E2E Testing with `@SpringBootTest` & Testcontainers
+* [x] 7.4: E2E Testing with `@SpringBootTest` & live PostgreSQL (16/16 tests passing!)
 
-* [ ] Phase 8: API Documentation
-* [ ] Phase 9: Production Features
-* [ ] Phase 10: Advanced Spring Boot
-* [ ] Phase 11: Microservices
-* [ ] Phase 12: Messaging & Event Driven Architecture
-* [ ] Phase 13: Docker
-* [ ] Phase 14: CI/CD
-* [ ] Phase 15: Cloud Deployment
+**Phase 8: API Documentation (Completed)**
+* [x] 8.1: OpenAPI 3 & Swagger UI Integration (`springdoc-openapi`)
+* [x] 8.2: JWT Bearer Scheme & Authorize Button configuration (`OpenApiConfig`)
+* [x] 8.3: `@Tag`, `@Operation`, `@ApiResponse`, and `@Schema` annotations
+* [x] 8.4: Same-Origin Policy & CORS Architecture documentation
+
+* [ ] Phase 9: Production Features (Observability, Actuator, Logging, Profiles)
+* [ ] Phase 10: Advanced Spring Boot (Caching, Async, Scheduling)
+* [ ] Phase 11: Microservices (Service boundaries, Feign Client, API Gateway)
+* [ ] Phase 12: Messaging & Event Driven Architecture (Kafka)
+* [ ] Phase 13: Docker (Containerization)
+* [ ] Phase 14: CI/CD (GitHub Actions)
+* [ ] Phase 15: Cloud Deployment (AWS)

@@ -359,8 +359,42 @@ These annotations live in `src/test/java/` to verify your code automatically.
 
 ---
 
-<details id="8-master-quick-reference-table">
-<summary><h3><a id="8-master-quick-reference-table"></a>📋 8. Master Quick Reference Table</h3></summary>
+<details id="8-api-documentation-openapi-3-swagger">
+<summary><h3><a id="8-api-documentation-openapi-3-swagger"></a>📑 8. API Documentation (OpenAPI 3 & Swagger)</h3></summary>
+
+### `@Tag(name = "...", description = "...")`
+* **Where:** Above a Controller class.
+* **What it does:** Groups related endpoints under a unified, descriptive category in Swagger UI (e.g., "Projects", "Authentication").
+* **Import:** `import io.swagger.v3.oas.annotations.tags.Tag;`
+
+### `@Operation(summary = "...", description = "...")`
+* **Where:** Above a Controller endpoint method (`@GetMapping`, `@PostMapping`, etc.).
+* **What it does:** Provides a concise summary and a detailed explanation of what the API endpoint does, displayed directly on the Swagger UI dashboard.
+* **Import:** `import io.swagger.v3.oas.annotations.Operation;`
+
+### `@ApiResponse(responseCode = "...", description = "...")` / `@ApiResponses`
+* **Where:** Above an endpoint method.
+* **What they do:** Explicitly documents every expected HTTP status code (200 OK, 400 Bad Request, 403 Forbidden, 404 Not Found) so frontend developers know what response scenarios to handle.
+* **Import:**
+  * `import io.swagger.v3.oas.annotations.responses.ApiResponse;`
+  * `import io.swagger.v3.oas.annotations.responses.ApiResponses;`
+
+### `@Schema(description = "...", example = "...", accessMode = ...)`
+* **Where:** Above DTO classes and DTO fields.
+* **What it does:** Defines human-readable descriptions and realistic sample values for request/response payloads in Swagger UI, replacing generic `"string"` placeholders.
+* **Import:** `import io.swagger.v3.oas.annotations.media.Schema;`
+
+### `@CrossOrigin(origins = "...")`
+* **Where:** Above a Controller class or individual endpoint method.
+* **What it does:** Grants cross-origin permission (CORS) for browsers running frontend code on another domain/port (e.g., `http://localhost:3000`) to access this endpoint.
+* **Import:** `import org.springframework.web.bind.annotation.CrossOrigin;`
+
+</details>
+
+---
+
+<details id="9-master-quick-reference-table">
+<summary><h3><a id="9-master-quick-reference-table"></a>📋 9. Master Quick Reference Table</h3></summary>
 
 | Goal | Annotation | Layer / File | Primary Purpose |
 |---|---|---|---|
@@ -408,5 +442,10 @@ These annotations live in `src/test/java/` to verify your code automatically.
 | **Lifecycle** | `@BeforeEach` / `@AfterEach` | Test classes | Run before/after every test method |
 | **Test Title** | `@DisplayName` | Test classes/methods | Clean human-readable name in reports |
 | **Fake Auth User** | `@WithMockUser` | Test methods/classes | Simulate user with roles (`ADMIN`/`USER`) for security tests |
+| **API Tag Group** | `@Tag` | Controllers | Group endpoints visually in Swagger UI |
+| **API Operation** | `@Operation` | Controller methods | Describe endpoint purpose in Swagger UI |
+| **API Response Code** | `@ApiResponse` / `@ApiResponses` | Controller methods | Document expected HTTP status codes (200, 400, 403) |
+| **DTO Schema Doc** | `@Schema` | DTO classes & fields | Document fields & provide realistic examples in Swagger |
+| **CORS Access** | `@CrossOrigin` | Controllers / methods | Allow browser cross-origin requests from frontend port |
 
 </details>
