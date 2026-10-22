@@ -22,7 +22,7 @@ This project evolves alongside my learning process. We are following a structure
 * **Phase 4:** Proper Application Architecture (Completed)
 * **Phase 5:** Validation & Error Handling (Completed)
 * **Phase 6:** Spring Security (Authentication & Authorization) (Completed)
-* **Phase 7:** Automated Testing (In Progress: 7.1 Unit Tests & 7.2 Controller Slice Tests Complete - 10/10 Passing!)
+* **Phase 7:** Automated Testing (In Progress: 7.1 Unit, 7.2 Controller, and 7.3 Security Tests Complete - 13/13 Passing!)
 * **Phase 8:** API Documentation (Swagger/OpenAPI)
 * **Phase 9:** Production Features (Actuator, Logging)
 * **Phase 10+:** Advanced concepts, Docker, CI/CD, and Cloud Deployment
@@ -73,29 +73,24 @@ spring boot/
 │   └── src/test/java/com/devopshub/backend/
 │       ├── service/
 │       │   └── ProjectServiceTest.java        (Level 1: Unit Testing with Mockito - 4/4 passing)
-│       └── controller/
-│           └── ProjectControllerTest.java     (Level 2: Slice Testing with MockMvc - 6/6 passing)
-├── notes/
-│   ├── Phase1_Fundamentals/
-│   ├── Phase2_REST_API/
-│   ├── Phase3_Database_JPA/
-│   ├── Phase4_Architecture/
-│   ├── Phase5_Validation/
-│   ├── Phase6_Security/
-│   │   ├── 01_Basic_Security.md
-│   │   ├── 02_Security_Config_and_BCrypt.md
-│   │   ├── 03_Complete_JWT_Security_Story.md
-│   │   ├── 04_Registration_and_RBAC.md
-│   │   └── SPRING_SECURITY_FLOW.md
-│   ├── Phase7_Testing/
-│   │   ├── 01_Unit_Testing_with_Mockito.md
-│   │   └── 02_Controller_Testing_with_MockMvc.md
-│   ├── ANNOTATIONS.md                   (Master Cheatsheet for all Spring Annotations)
-│   ├── MENTAL_MODELS.md                 (Key analogies, 3-Bucket model & concepts)
-│   └── Errors_and_Fixes/
-├── PROJECT_CONTEXT.md                    (Learning history and state)
-└── PAUSED.md                             (Current checkpoint)
+│       ├── controller/
+│       │   ├── ProjectControllerTest.java     (Level 2: Slice Testing with MockMvc - 6/6 passing)
+│       │   └── ProjectSecurityTest.java       (Level 2.5: Security Testing with MockMvc - 3/3 passing)
+│       └── integration/
+│           └── ProjectIntegrationTest.java    (Level 3: End-to-End Integration Testing with @SpringBootTest)
+├── notes/                                     (Learning Notes & Knowledge Base - see link below)
+├── PROJECT_CONTEXT.md                         (Learning history and state)
+└── PAUSED.md                                  (Current checkpoint)
 ```
+
+## 📖 Learning Notes & Knowledge Base
+
+All detailed concept explanations, architectural deep-dives, cheat sheets, and bug fixes are maintained in the **[notes/](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/README.md)** directory:
+
+* 📚 **[DevOpsHub Master Notes Portal](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/README.md)** — Centralized curriculum index linking all phase guides.
+* 🏷️ **[Master Annotations Cheatsheet](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/ANNOTATIONS.md)** — Single source of truth for all Spring annotations with collapsible dropdowns.
+* 🧠 **[Mental Models & Analogies](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/MENTAL_MODELS.md)** — Intuitive analogies (Restaurant, Bouncer, Stunt Double, 4 Import Buckets, Front Door vs Circuit Breaker).
+* 🛠️ **[Errors & Troubleshooting Catalog](file:///s:/Shyam/Grill/Working%20on/learning/playground/java/spring%20boot/notes/Errors_and_Fixes/README.md)** — Diagnostics and solutions for real-world bugs encountered.
 
 ---
 *Note: This README will be continuously updated as new features are added to DevOpsHub.*

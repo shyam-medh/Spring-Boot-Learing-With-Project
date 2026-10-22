@@ -134,7 +134,7 @@
 **Phase 7: Testing**
 * [x] 7.1: Unit Testing with JUnit 5
 * [x] 7.2: Mocking with Mockito (Testing Services)
-* [x] 7.3: Controller Testing with `@WebMvcTest` (Testing Controllers & MockMvc)
+* [x] 7.3: Controller & Security Testing (`@WebMvcTest`, MockMvc, Roles & SecurityFilterChain)
 * [ ] 7.4: E2E Testing with `@SpringBootTest` & Testcontainers
 
 * [ ] Phase 8: API Documentation

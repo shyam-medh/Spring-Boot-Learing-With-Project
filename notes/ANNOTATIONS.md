@@ -344,6 +344,17 @@ These annotations live in `src/test/java/` to verify your code automatically.
 * **Where:** Above a test method or test class.
 * **What it does:** Replaces the default method name in test reports with a clean, human-readable sentence.
 
+### `@WithMockUser(username = "admin", roles = {"ADMIN"})`
+* **Where:** Above a test method or test class.
+* **What it does:** **The Fake VIP Badge.** Populates Spring Security's `SecurityContextHolder` with an authenticated user having the specified username and roles. Allows testing protected endpoints without generating real JWT tokens or calling login endpoints!
+* **Import:** `import org.springframework.security.test.context.support.WithMockUser;`
+* **Dependency:** Requires `spring-security-test`.
+
+### `@WithAnonymousUser`
+* **Where:** Above a test method.
+* **What it does:** Explicitly simulates an unauthenticated guest visitor to verify that secured endpoints reject anonymous requests with `401 Unauthorized` or `403 Forbidden`.
+* **Import:** `import org.springframework.security.test.context.support.WithAnonymousUser;`
+
 </details>
 
 ---
@@ -396,5 +407,6 @@ These annotations live in `src/test/java/` to verify your code automatically.
 | **Context Mock** | `@MockBean` / `@MockitoBean` | Integration tests | Replace Spring bean with mock in context |
 | **Lifecycle** | `@BeforeEach` / `@AfterEach` | Test classes | Run before/after every test method |
 | **Test Title** | `@DisplayName` | Test classes/methods | Clean human-readable name in reports |
+| **Fake Auth User** | `@WithMockUser` | Test methods/classes | Simulate user with roles (`ADMIN`/`USER`) for security tests |
 
 </details>
