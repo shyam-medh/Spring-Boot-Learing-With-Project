@@ -22,6 +22,7 @@ Welcome to the **Phase 2 REST API Guide**! This directory details how to build p
 | **03** | [03_Dependency_Injection_Flow.md](03_Dependency_Injection_Flow.md) | Request to Service DI Flow | Step-by-step walkthrough of how an HTTP request travels from Controller to Service. |
 | **04** | [05_Path_Variables.md](05_Path_Variables.md) | Path Variables & Params | When to use `/api/projects/{id}` vs `/api/projects?status=ACTIVE`. |
 | **05** | [06_CRUD_Summary.md](06_CRUD_Summary.md) | REST CRUD Cheat Sheet | Complete cheat sheet of annotations, status codes, and HTTP methods for CRUD. |
+| **06** | [07_The_Big_Picture_and_Enterprise_REST.md](07_The_Big_Picture_and_Enterprise_REST.md) | The Big Picture & Enterprise REST | What REST really means from first principles, the 4 pillars, request journey, and the enterprise scale pyramid (Pagination, ETags, Idempotency). |
 
 ---
 
