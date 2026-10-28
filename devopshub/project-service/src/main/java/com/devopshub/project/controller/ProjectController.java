@@ -15,6 +15,9 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
+/**
+ * REST Controller: Exposes HTTP endpoints for registering and querying projects in DevOpsHub service catalog.
+ */
 @Tag(name = "Projects", description = "Service Catalog and Git Repository Management")
 @RestController
 @RequestMapping("/api/projects")
@@ -22,10 +25,19 @@ public class ProjectController {
 
     private final ProjectService projectService;
 
+    /**
+     * Caption: Constructor Injection
+     * Injects ProjectService to handle business operations.
+     */
     public ProjectController(ProjectService projectService) {
         this.projectService = projectService;
     }
 
+    /**
+     * Caption: POST /api/projects (Register Project)
+     * Handles HTTP POST to create a new project catalog entry.
+     * Sets Location header to the newly created URI and returns HTTP 201 Created.
+     */
     @Operation(summary = "Register a new project in the catalog")
     @ApiResponses({
             @ApiResponse(responseCode = "201", description = "Project registered successfully"),
@@ -43,6 +55,11 @@ public class ProjectController {
         return ResponseEntity.created(location).body(created);
     }
 
+    /**
+     * Caption: GET /api/projects (List All Projects)
+     * Handles HTTP GET to fetch the entire project catalog.
+     * Returns HTTP 200 OK.
+     */
     @Operation(summary = "List all registered projects")
     @ApiResponse(responseCode = "200", description = "Projects retrieved successfully")
     @GetMapping
@@ -50,6 +67,11 @@ public class ProjectController {
         return ResponseEntity.ok(projectService.getAllProjects());
     }
 
+    /**
+     * Caption: GET /api/projects/{id} (Get Project by ID)
+     * Handles HTTP GET to fetch project details by primary key ID.
+     * Returns HTTP 200 OK or 404 Not Found.
+     */
     @Operation(summary = "Get project details by numeric ID")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Project found"),
@@ -60,6 +82,11 @@ public class ProjectController {
         return ResponseEntity.ok(projectService.getProjectById(id));
     }
 
+    /**
+     * Caption: GET /api/projects/slug/{slug} (Get Project by Slug)
+     * Handles HTTP GET to fetch project details by URL-friendly slug.
+     * Returns HTTP 200 OK or 404 Not Found.
+     */
     @Operation(summary = "Get project details by URL slug")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Project found"),

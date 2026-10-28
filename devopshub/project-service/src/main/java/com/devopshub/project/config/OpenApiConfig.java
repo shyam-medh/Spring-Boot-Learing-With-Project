@@ -7,9 +7,18 @@ import io.swagger.v3.oas.models.info.License;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Configuration Layer: Exposes OpenAPI 3.0 specification for Project Service.
+ */
 @Configuration
 public class OpenApiConfig {
 
+    /**
+     * Caption: Project Service OpenAPI Specification Bean
+     * Builds and exposes the OpenAPI 3.0 specification metadata for Swagger UI at /swagger-ui.html.
+     *
+     * @return Configured OpenAPI bean
+     */
     @Bean
     public OpenAPI projectServiceOpenAPI() {
         return new OpenAPI()

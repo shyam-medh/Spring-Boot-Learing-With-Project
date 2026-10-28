@@ -14,6 +14,9 @@
 
     <modules>
         <module>project-service</module>
+        <module>auth-service</module>
+        <module>environment-service</module>
+        <module>deployment-service</module>
     </modules>
 
     <properties>

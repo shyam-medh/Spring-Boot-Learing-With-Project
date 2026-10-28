@@ -11,19 +11,35 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Global Exception Handler: Formats errors, validation failures, and duplicate collisions
+ * into uniform JSON response entities across all Project Service controllers.
+ */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+    /**
+     * Caption: Handle 404 Project Not Found
+     * Intercepts ResourceNotFoundException and responds with HTTP 404 NOT_FOUND.
+     */
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<Map<String, Object>> handleResourceNotFound(ResourceNotFoundException ex) {
         return buildErrorResponse(HttpStatus.NOT_FOUND, ex.getMessage());
     }
 
+    /**
+     * Caption: Handle 409 Duplicate Name or Slug Conflict
+     * Intercepts DuplicateResourceException and responds with HTTP 409 CONFLICT.
+     */
     @ExceptionHandler(DuplicateResourceException.class)
     public ResponseEntity<Map<String, Object>> handleDuplicateResource(DuplicateResourceException ex) {
         return buildErrorResponse(HttpStatus.CONFLICT, ex.getMessage());
     }
 
+    /**
+     * Caption: Handle 400 Validation Failures
+     * Intercepts MethodArgumentNotValidException and lists all violating fields and constraints.
+     */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, Object>> handleValidationErrors(MethodArgumentNotValidException ex) {
         Map<String, String> fieldErrors = new HashMap<>();
@@ -40,11 +56,19 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
     }
 
+    /**
+     * Caption: Handle 500 Generic Server Errors
+     * Catch-all fallback returning a clean JSON response instead of a raw stack trace.
+     */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, Object>> handleGenericException(Exception ex) {
         return buildErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, "An unexpected error occurred");
     }
 
+    /**
+     * Caption: Helper to Build Uniform Error Map
+     * Formats timestamp, status code, error phrase, and message into a standardized JSON response.
+     */
     private ResponseEntity<Map<String, Object>> buildErrorResponse(HttpStatus status, String message) {
         Map<String, Object> body = new HashMap<>();
         body.put("timestamp", LocalDateTime.now().toString());
