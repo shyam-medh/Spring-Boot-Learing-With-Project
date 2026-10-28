@@ -17,6 +17,7 @@
         <module>auth-service</module>
         <module>environment-service</module>
         <module>deployment-service</module>
+        <module>notification-service</module>
     </modules>
 
     <properties>
